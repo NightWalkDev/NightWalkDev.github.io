@@ -22,9 +22,9 @@ nav:
 
 hero:
   openToWork: true
-  badge: Open to work · Paris / Remote
+  badge: Open to work · France / Remote
   name: Victor Regard
-  role: Gameplay & 3C Programmer
+  role: Gameplay / 3C Programmer
   intro: I build characters, cameras and controls that feel good in your hands, in Unity and Unreal Engine. I also make synth music and digital art.
   vhsOverlay: true
   buttons:
@@ -106,7 +106,7 @@ contact:
       icon: mail
       color: "#34D3E8"
     - label: LinkedIn
-      href: https://www.linkedin.com/
+      href: https://www.linkedin.com/in/victor-regard-2622bb273/
       icon: person
       color: "#FF8A3D"
     - label: GitHub
