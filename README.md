@@ -1,4 +1,4 @@
-# v-rgd.github.io
+# nightwalkdev.github.io
 
 Portfolio of Victor Regard, gameplay & 3C programmer. Built with [Astro](https://astro.build), published on GitHub Pages.
 
