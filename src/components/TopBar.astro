@@ -2,7 +2,9 @@
 import { site } from '../lib/site';
 
 const onHome = Astro.url.pathname === '/';
-const href = (target: string) => (target.startsWith('#') && !onHome ? '/' + target : target);
+// Links to the contact box stay on the current page: every page has one.
+const onEveryPage = '#' + site.contact.id;
+const href = (target: string) => (target.startsWith('#') && !onHome && target !== onEveryPage ? '/' + target : target);
 ---
 
 <header class="top">

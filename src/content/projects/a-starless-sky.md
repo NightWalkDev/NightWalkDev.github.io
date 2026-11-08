@@ -2,7 +2,7 @@
 title: "A Starless Sky"
 engine: Unreal Engine 5
 role: Boat controller, camera, interactions, map
-scope: 9 months · team of 9
+scope: 1 year · team of 11
 cover: /media/starless-sky.jpg
 coverAlt: A Starless Sky key art
 order: 1

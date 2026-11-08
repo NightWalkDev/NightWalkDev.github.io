@@ -2,13 +2,19 @@
 # Colors: use a theme color name (rust, yellow, green, teal, cream, panel)
 # or any hex value like "#34D3E8". Theme colors live in src/styles/theme.css.
 
-title: Victor Regard · Gameplay & 3C Programmer
-description: Gameplay and 3C programmer working in Unity and Unreal Engine. Portfolio of game projects, prototypes, music and digital art.
+title: Victor Regard · Gameplay / 3C Programmer
+description: Gameplay / 3C programmer working in Unity and Unreal Engine. Portfolio of game projects, prototypes, music and digital art.
 
 # Header color of each project card, picked from its engine (a project can override it)
 engineColors:
   Unreal Engine 5: rust
   Unity: teal
+
+# Dithered look of the card images (they show in full quality on hover)
+dither:
+  enabled: true      # false = always show the full-quality images
+  resolution: 176    # width of the dithered image in pixels: lower = bigger pixels
+  levels: 4          # shades per color channel: lower = harsher, more retro
 
 nav:
   - label: Projects
@@ -25,8 +31,9 @@ hero:
   badge: Open to work · France / Remote
   name: Victor Regard
   role: Gameplay / 3C Programmer
-  intro: I build characters, cameras and controls that feel good in your hands, in Unity and Unreal Engine. I also make synth music and digital art.
+  intro: I'm a game programmer specialized in 3C, haptics, and game feel. I mainly use Unity and Unreal Engine to build characters and interactions that feel good in your hands. I also make synth music and digital art for my passion projects.
   vhsOverlay: true
+  showCounter: false   # the "SP 0:00:00" counter in the top right of the hero
   buttons:
     - label: View projects
       href: "#projects"

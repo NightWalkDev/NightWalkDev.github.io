@@ -9,4 +9,5 @@ order: 2
 
 ## Overview
 
-Write-up coming soon.
+A solar system generator prototype I made back in 2024. Originally an assignment during my 4th year of Game Programming, I decided to expand on it to add more features and see how far I could go in terms of optimization, notably using Unity's Job system to implement multithreading.
+

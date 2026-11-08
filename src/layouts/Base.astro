@@ -26,12 +26,13 @@ const { title = site.title, description = site.description } = Astro.props;
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Unbounded:wght@600;700;800&family=Rethink+Sans:wght@400;500;600;700&display=swap" />
   </head>
-  <body>
+  <body data-dither={JSON.stringify(site.dither)}>
     <TopBar />
     <slot />
     <script>
       import { ditherImages } from '../scripts/dither.js';
-      ditherImages();
+      const settings = JSON.parse(document.body.dataset.dither ?? '{}');
+      if (settings.enabled) ditherImages(document, settings);
     </script>
   </body>
 </html>

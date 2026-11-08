@@ -2,8 +2,10 @@
 import Base from '../layouts/Base.astro';
 import Node from './Node.astro';
 import Preview3D from './Preview3D.astro';
+import Contact from './Contact.astro';
 import { site } from '../lib/site';
 import { resolveColor } from '../lib/colors';
+import { youtubeEmbedUrl } from '../lib/youtube';
 
 interface Props {
   title: string;
@@ -12,12 +14,13 @@ interface Props {
   cover?: string;
   coverAlt?: string;
   model?: string;
+  trailer?: string;
   links: { label: string; href: string }[];
   backHref: string;
   backLabel: string;
 }
 
-const { title, color, facts, cover, coverAlt = '', model, links, backHref, backLabel } = Astro.props;
+const { title, color, facts, cover, coverAlt = '', model, trailer, links, backHref, backLabel } = Astro.props;
 const { bg, on } = resolveColor(color);
 const preview = model ? { ...site.preview, title: 'Model', label: model.split('/').pop() ?? '', scene: 'model' as const, model } : null;
 ---
@@ -34,7 +37,9 @@ const preview = model ? { ...site.preview, title: 'Model', label: model.split('/
     </div>
     <div class="page-grid">
       <article>
-        {cover && <img class="page-cover" src={cover} alt={coverAlt} style="width: 100%; object-fit: cover; display: block; box-shadow: 0 0 0 2px var(--shadow), 6px 6px 0 var(--shadow)" />}
+        {trailer ? (
+          <iframe class="page-cover" src={youtubeEmbedUrl(trailer)} title={`${title} trailer`} allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen style="width: 100%; display: block; border: 0; box-shadow: 0 0 0 2px var(--shadow), 6px 6px 0 var(--shadow)"></iframe>
+        ) : cover && <img class="page-cover" src={cover} alt={coverAlt} style="width: 100%; object-fit: cover; display: block; box-shadow: 0 0 0 2px var(--shadow), 6px 6px 0 var(--shadow)" />}
         <div class="prose"><slot /></div>
       </article>
       <aside class="side">
@@ -50,6 +55,10 @@ const preview = model ? { ...site.preview, title: 'Model', label: model.split('/
           </Node>
         )}
       </aside>
+    </div>
+    <div class="page-end">
+      <Contact />
+      <p class="footer">{site.footer}</p>
     </div>
   </main>
 </Base>

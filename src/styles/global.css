@@ -59,7 +59,7 @@ a.node { display: flex; flex-direction: column; text-decoration: none; color: va
 .img { position: relative; margin: 10px 12px 4px; aspect-ratio: 16 / 10; overflow: hidden; background: var(--shadow); }
 .img img, .img .dither, .img svg { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; display: block; }
 .img .dither { image-rendering: pixelated; transition: opacity 0.15s steps(3); }
-a.node:hover .dither, a.node:focus .dither { opacity: 0; }
+.node:hover .dither, .node:focus-within .dither { opacity: 0; }
 .art .img { margin: 8px; aspect-ratio: 1 / 1; }
 .art .txt { padding: 2px 12px 12px; font-size: 14px; }
 
@@ -116,7 +116,8 @@ a.rl:hover { color: var(--ink); }
 .page-head h1 { margin: 0; font-size: clamp(40px, 6vw, 80px); line-height: 0.95; letter-spacing: -0.02em; }
 .page-meta { display: flex; flex-wrap: wrap; gap: 10px; }
 .chip { display: inline-flex; align-items: center; min-height: 30px; padding: 0 12px; font-size: 14px; font-weight: 600; background: var(--panel2); box-shadow: 3px 3px 0 var(--shadow); }
-.page-grid { display: grid; grid-template-columns: minmax(0, 1fr) 360px; gap: 40px; align-items: start; padding-bottom: 90px; }
+.page-grid { display: grid; grid-template-columns: minmax(0, 1fr) 360px; gap: 40px; align-items: start; padding-bottom: 64px; }
+.page-end { display: flex; flex-direction: column; gap: 56px; padding-bottom: 90px; }
 .page-cover { margin: 0 0 32px; aspect-ratio: 16 / 9; }
 .prose { font-size: 17px; line-height: 1.7; max-width: 72ch; }
 .prose h2, .prose h3 { font-family: var(--font-display); letter-spacing: -0.01em; line-height: 1.2; margin: 1.8em 0 0.6em; }

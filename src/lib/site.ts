@@ -18,6 +18,13 @@ const siteSchema = z.object({
   title: z.string(),
   description: z.string(),
   engineColors: z.record(z.string(), z.string()).default({}),
+  dither: z
+    .object({
+      enabled: z.boolean(),
+      resolution: z.number().int().min(16).max(1024),
+      levels: z.number().int().min(2).max(16),
+    })
+    .default({ enabled: true, resolution: 176, levels: 4 }),
   nav: z.array(link),
   hero: z.object({
     openToWork: z.boolean(),
@@ -26,6 +33,7 @@ const siteSchema = z.object({
     role: z.string(),
     intro: z.string(),
     vhsOverlay: z.boolean().default(true),
+    showCounter: z.boolean().default(true),
     buttons: z.array(link.extend({ color: z.string().optional() })),
   }),
   profile: z.array(z.object({ title: z.string(), color: z.string().optional(), text: z.string() })),

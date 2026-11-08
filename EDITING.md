@@ -57,11 +57,21 @@ Code blocks get syntax highlighting: write three backticks followed by the langu
 
 - Prefer short `.mp4` clips over gifs: same clip, often 5 to 10 times lighter.
 - Long videos: upload to YouTube and embed them.
-- Images are shown dithered on the home page and in full on hover. Nothing to do on your side: the dithering is automatic.
+- Images are shown dithered on the home page and in full on hover. Nothing to do on your side: the dithering is automatic. Its look is set by `dither` in `site.yaml` (`enabled`, `resolution` = pixel size, `levels` = number of shades).
 
 ## The 3D preview
 
 `preview.scene: solar` shows the solar system; `model` shows the `.glb` from `preview.model`. Camera, light, sun, orbits and each planet are set right there (sizes and speeds use the same units as the mockup Tweaks). A planet gets an atmosphere halo with `atmosphere: "#hex"` and a ring with `ring: "#hex"`.
+
+## Trailer at the top of a page
+
+Add `trailer:` with a YouTube link to a project or prototype file. It replaces the cover image at the top of that page (the cover is still used on the home page card):
+
+```yaml
+trailer: https://www.youtube.com/watch?v=2ErvaO8SYFg
+```
+
+## 3D models on a page
 
 A project or prototype can show its own model on its page: add `model: /models/my-model.glb` to its file. Export models as `.glb` without compression, under 20,000 triangles.
 

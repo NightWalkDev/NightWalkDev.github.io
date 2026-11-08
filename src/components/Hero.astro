@@ -15,7 +15,7 @@ const [first, ...rest] = hero.name.split(' ');
       <div class="track" aria-hidden="true"></div>
       <div class="hero-osd" aria-hidden="true">
         <span class="osd">PLAY ▶</span>
-        <span class="osd">SP <span data-counter>0:00:00</span></span>
+        {hero.showCounter && <span class="osd">SP <span data-counter>0:00:00</span></span>}
       </div>
     </>
   )}
