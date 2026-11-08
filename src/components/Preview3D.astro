@@ -1,0 +1,26 @@
+---
+import type { PreviewConfig } from '../lib/site';
+
+interface Props {
+  config: PreviewConfig;
+}
+
+const { config } = Astro.props;
+const label = config.label || (config.scene === 'solar' ? 'Solar system' : (config.model ?? '').split('/').pop());
+const aria = config.scene === 'solar' ? 'Pixelated 3D solar system, drag to rotate, scroll to zoom' : 'Pixelated 3D model, drag to rotate, scroll to zoom';
+---
+
+<div class="node preview">
+  <div class="node-h" style="--hc: var(--panel2); --ho: var(--ink)">{config.title}<small>{label}</small></div>
+  <div class="r3d-wrap">
+    <canvas class="pix" data-preview={JSON.stringify(config)} role="img" aria-label={aria}></canvas>
+    <span class="zoom-hint">Scroll to zoom</span>
+  </div>
+</div>
+
+<script>
+  import { mountPreview } from '../scripts/r3d.js';
+  document.querySelectorAll<HTMLCanvasElement>('canvas[data-preview]').forEach((canvas) => {
+    mountPreview(canvas, JSON.parse(canvas.dataset.preview ?? '{}'));
+  });
+</script>

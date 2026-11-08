@@ -1,0 +1,31 @@
+/*
+  Theme colors. Change a value here and every place using that color updates.
+  Each color has an "on-" partner: the text color used on top of it.
+  To add a color: add --name and --on-name, then use "name" in your content files.
+*/
+:root {
+  --bg: #141110;
+  --panel: #201a17;
+  --panel2: #2a221e;
+  --ink: #f2e6cc;
+  --dim: #a89a84;
+  --shadow: #060504;
+  --grid: rgba(242, 230, 204, 0.08);
+  --accent: var(--yellow);
+
+  --yellow: #ffc83d;
+  --on-yellow: #141110;
+  --rust: #e04a2f;
+  --on-rust: #fff4de;
+  --green: #9aaa45;
+  --on-green: #141110;
+  --cream: #f2e6cc;
+  --on-cream: #141110;
+  --teal: #3e9c8f;
+  --on-teal: #f2fffb;
+  --panel-color: var(--panel2);
+  --on-panel-color: var(--ink);
+
+  --font-display: 'Unbounded', system-ui, sans-serif;
+  --font-body: 'Rethink Sans', system-ui, sans-serif;
+}

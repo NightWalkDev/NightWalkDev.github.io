@@ -1,0 +1,18 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import Cover from './Cover.astro';
+
+interface Props {
+  entry: CollectionEntry<'art'>;
+}
+
+const { entry } = Astro.props;
+const a = entry.data;
+const Tag = a.link ? 'a' : 'div';
+const external = a.link?.startsWith('http');
+---
+
+<Tag class="node art" href={a.link} target={external ? '_blank' : undefined} rel={external ? 'noopener' : undefined}>
+  <Cover src={a.image} alt={a.imageAlt} />
+  <div class="txt">{a.title}</div>
+</Tag>

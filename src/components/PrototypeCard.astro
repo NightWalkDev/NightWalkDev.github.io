@@ -1,0 +1,18 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import Node from './Node.astro';
+import Cover from './Cover.astro';
+
+interface Props {
+  entry: CollectionEntry<'prototypes'>;
+  color?: string;
+}
+
+const { entry, color } = Astro.props;
+const p = entry.data;
+---
+
+<Node href={`/prototypes/${entry.id}/`} title={p.title} color={p.color ?? color}>
+  <Cover src={p.cover} alt={p.coverAlt} />
+  <div class="row"><span class="k">{p.tag}</span>{p.summary}</div>
+</Node>

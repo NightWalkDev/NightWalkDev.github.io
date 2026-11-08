@@ -1,0 +1,29 @@
+---
+import { render } from 'astro:content';
+import EntryPage from '../../components/EntryPage.astro';
+import { engineColor } from '../../lib/site';
+import { getProjects } from '../../lib/content';
+
+export async function getStaticPaths() {
+  const projects = await getProjects();
+  return projects.map((entry) => ({ params: { slug: entry.id }, props: { entry } }));
+}
+
+const { entry } = Astro.props;
+const p = entry.data;
+const { Content } = await render(entry);
+---
+
+<EntryPage
+  title={p.title}
+  color={engineColor(p.engine, p.color)}
+  facts={[{ label: 'Engine', value: p.engine }, { label: 'Role', value: p.role }, { label: 'Scope', value: p.scope }]}
+  cover={p.cover}
+  coverAlt={p.coverAlt}
+  model={p.model}
+  links={p.links}
+  backHref="/#projects"
+  backLabel="All projects"
+>
+  <Content />
+</EntryPage>

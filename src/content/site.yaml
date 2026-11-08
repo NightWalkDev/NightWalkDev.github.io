@@ -1,0 +1,117 @@
+# Site-wide settings and the home page.
+# Colors: use a theme color name (rust, yellow, green, teal, cream, panel)
+# or any hex value like "#34D3E8". Theme colors live in src/styles/theme.css.
+
+title: Victor Regard · Gameplay & 3C Programmer
+description: Gameplay and 3C programmer working in Unity and Unreal Engine. Portfolio of game projects, prototypes, music and digital art.
+
+# Header color of each project card, picked from its engine (a project can override it)
+engineColors:
+  Unreal Engine 5: rust
+  Unity: teal
+
+nav:
+  - label: Projects
+    href: "#projects"
+  - label: Prototypes
+    href: "#prototypes"
+  - label: Music & Art
+    href: "#art"
+  - label: Contact
+    href: "#contact"
+
+hero:
+  openToWork: true
+  badge: Open to work · Paris / Remote
+  name: Victor Regard
+  role: Gameplay & 3C Programmer
+  intro: I build characters, cameras and controls that feel good in your hands, in Unity and Unreal Engine. I also make synth music and digital art.
+  vhsOverlay: true
+  buttons:
+    - label: View projects
+      href: "#projects"
+      color: yellow
+    - label: Contact
+      href: "#contact"
+      color: cream
+
+# The chain of boxes under the hero
+profile:
+  - title: Focus
+    color: green
+    text: 3C · Game feel · Haptics
+  - title: Engines
+    color: rust
+    text: Unity · C# · Unreal Engine 5 · C++ · Blueprints
+  - title: Based in
+    color: cream
+    text: Paris, France · Remote friendly
+
+# The 3D preview next to the hero. scene: solar or model
+preview:
+  title: Preview
+  label: Solar system
+  scene: solar
+  model: /models/eye.glb
+  modelFront: "-Z"
+  modelColor: "#FFC83D"
+  light: { angle: 45, height: -65 }
+  camera: { zoom: 0.7, zoomMin: 0.2, zoomMax: 2, tilt: 25, spin: 0, ortho: false }
+  solar:
+    sun: { color: "#FFC83D", size: 0.5, glow: 1 }
+    orbits: { show: true, color: "#A89A84", speed: 0.3, speedRatio: 0.5, spacing: 0.5, spacingRatio: 1.3 }
+    planets:
+      - { color: "#E04A2F", size: 0.10 }
+      - { color: "#3E9C8F", size: 0.15, atmosphere: "#7FE6D6" }
+      - { color: "#9AAA45", size: 0.12 }
+      - { color: "#FFDF9D", size: 0.20, ring: "#FFC83D" }
+
+# Home page sections, top to bottom. Reorder, remove or duplicate freely.
+# type: showreel | projects | prototypes | art | text
+sections:
+  - type: showreel
+    id: reel
+    title: Showreel
+    note: coming soon
+    image: /media/starless-shot1.jpg
+    # youtube: dQw4w9WgXcQ   <- put a YouTube video id here to embed the real reel
+
+  - type: projects
+    id: projects
+    title: Game projects
+    note: Team productions · hover to see the full image
+    color: rust
+    featured: 2          # how many cards get the big top row
+
+  - type: prototypes
+    id: prototypes
+    title: Prototypes & experiments
+    note: Solo projects
+    color: green
+
+  - type: art
+    id: art
+    title: Music & digital art
+    note: FL Studio · Photoshop
+    color: yellow
+
+contact:
+  id: contact
+  title: Contact
+  color: rust
+  text: "Business inquiries: victorregard.pro@gmail.com"
+  links:
+    - label: Email
+      href: mailto:victorregard.pro@gmail.com
+      icon: mail
+      color: "#34D3E8"
+    - label: LinkedIn
+      href: https://www.linkedin.com/
+      icon: person
+      color: "#FF8A3D"
+    - label: GitHub
+      href: https://github.com/V-RGD
+      icon: code
+      color: "#F2E6CC"
+
+footer: © 2026 Victor Regard

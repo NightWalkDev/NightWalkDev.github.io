@@ -1,0 +1,58 @@
+---
+import Base from '../layouts/Base.astro';
+import Hero from '../components/Hero.astro';
+import Showreel from '../components/Showreel.astro';
+import SectionBox from '../components/SectionBox.astro';
+import ProjectCard from '../components/ProjectCard.astro';
+import PrototypeCard from '../components/PrototypeCard.astro';
+import ArtTile from '../components/ArtTile.astro';
+import Contact from '../components/Contact.astro';
+import { site } from '../lib/site';
+import { getProjects, getPrototypes, getArt } from '../lib/content';
+
+const [projects, prototypes, art] = await Promise.all([getProjects(), getPrototypes(), getArt()]);
+---
+
+<Base>
+  <main>
+    <Hero />
+    <div class="wrap" style="padding-top: 64px; padding-bottom: 90px; display: flex; flex-direction: column; gap: 56px">
+      {site.sections.map((s) => {
+        if (s.type === 'showreel') return <Showreel {...s} />;
+        if (s.type === 'projects') {
+          const featured = projects.slice(0, s.featured);
+          const others = projects.slice(s.featured);
+          return (
+            <SectionBox id={s.id} title={s.title} note={s.note} color={s.color}>
+              <div class="stack">
+                {featured.length > 0 && <div class="g2">{featured.map((p) => <ProjectCard entry={p} />)}</div>}
+                {others.length > 0 && <div class="g3">{others.map((p) => <ProjectCard entry={p} />)}</div>}
+              </div>
+            </SectionBox>
+          );
+        }
+        if (s.type === 'prototypes') {
+          return (
+            <SectionBox id={s.id} title={s.title} note={s.note} color={s.color}>
+              <div class="g4">{prototypes.map((p) => <PrototypeCard entry={p} color={s.color} />)}</div>
+            </SectionBox>
+          );
+        }
+        if (s.type === 'art') {
+          return (
+            <SectionBox id={s.id} title={s.title} note={s.note} color={s.color}>
+              <div class="g4">{art.map((a) => <ArtTile entry={a} />)}</div>
+            </SectionBox>
+          );
+        }
+        return (
+          <SectionBox id={s.id} title={s.title} note={s.note} color={s.color}>
+            <p style="margin: 0; font-size: 17px; line-height: 1.6; max-width: 72ch">{s.text}</p>
+          </SectionBox>
+        );
+      })}
+      <Contact />
+      <p class="footer">{site.footer}</p>
+    </div>
+  </main>
+</Base>

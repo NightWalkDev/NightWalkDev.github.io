@@ -1,0 +1,24 @@
+---
+import { resolveColor } from '../lib/colors';
+
+interface Props {
+  title?: string;
+  note?: string;
+  color?: string;
+  href?: string;
+  class?: string;
+  pins?: 'left' | 'right' | 'both';
+  label?: string;
+}
+
+const { title, note, color, href, class: extra = '', pins, label } = Astro.props;
+const { bg, on } = resolveColor(color);
+const Tag = href ? 'a' : 'div';
+---
+
+<Tag class:list={['node', extra]} href={href} aria-label={label} style={`--hc: ${bg}; --ho: ${on}; --pc: ${bg}`}>
+  {title && <div class="node-h">{title}{note && <small>{note}</small>}</div>}
+  {(pins === 'left' || pins === 'both') && <span class="pin pin-l" aria-hidden="true"></span>}
+  {(pins === 'right' || pins === 'both') && <span class="pin pin-r" aria-hidden="true"></span>}
+  <slot />
+</Tag>

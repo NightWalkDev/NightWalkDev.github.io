@@ -1,0 +1,19 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import { engineColor } from '../lib/site';
+import Node from './Node.astro';
+import Cover from './Cover.astro';
+
+interface Props {
+  entry: CollectionEntry<'projects'>;
+}
+
+const { entry } = Astro.props;
+const p = entry.data;
+---
+
+<Node href={`/projects/${entry.id}/`} title={p.title} note={p.engine} color={engineColor(p.engine, p.color)}>
+  <Cover src={p.cover} alt={p.coverAlt} />
+  <div class="row"><span class="k">Role</span>{p.role}</div>
+  <div class="row"><span class="k">Scope</span>{p.scope}</div>
+</Node>

@@ -1,0 +1,31 @@
+---
+import { render } from 'astro:content';
+import EntryPage from '../../components/EntryPage.astro';
+import { site } from '../../lib/site';
+import { getPrototypes } from '../../lib/content';
+
+export async function getStaticPaths() {
+  const prototypes = await getPrototypes();
+  return prototypes.map((entry) => ({ params: { slug: entry.id }, props: { entry } }));
+}
+
+const { entry } = Astro.props;
+const p = entry.data;
+const section = site.sections.find((s) => s.type === 'prototypes');
+const sectionColor = section && 'color' in section ? section.color : undefined;
+const { Content } = await render(entry);
+---
+
+<EntryPage
+  title={p.title}
+  color={p.color ?? sectionColor ?? 'green'}
+  facts={[{ label: p.tag, value: p.summary }]}
+  cover={p.cover}
+  coverAlt={p.coverAlt}
+  model={p.model}
+  links={p.links}
+  backHref="/#prototypes"
+  backLabel="All prototypes"
+>
+  <Content />
+</EntryPage>

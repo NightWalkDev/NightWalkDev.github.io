@@ -1,0 +1,52 @@
+---
+import { site } from '../lib/site';
+import { resolveColor } from '../lib/colors';
+import Preview3D from './Preview3D.astro';
+import ProfileChain from './ProfileChain.astro';
+
+const { hero, preview } = site;
+const [first, ...rest] = hero.name.split(' ');
+---
+
+<section id="top" class="hero">
+  {hero.vhsOverlay && (
+    <>
+      <div class="scan" aria-hidden="true"></div>
+      <div class="track" aria-hidden="true"></div>
+      <div class="hero-osd" aria-hidden="true">
+        <span class="osd">PLAY ▶</span>
+        <span class="osd">SP <span data-counter>0:00:00</span></span>
+      </div>
+    </>
+  )}
+  <div class="wrap hero-inner">
+    <div class="hero-grid">
+      <div class="hero-text">
+        {hero.openToWork && <span class="badge">● {hero.badge}</span>}
+        <h1 class="display chroma">{first}<br />{rest.join(' ')}</h1>
+        <p class="display hero-role">{hero.role}</p>
+        <p class="hero-intro">{hero.intro}</p>
+        <div class="btn-row">
+          {hero.buttons.map((b) => {
+            const { bg, on } = resolveColor(b.color, 'yellow');
+            return <a class="btn" href={b.href} style={`--c: ${bg}; --on: ${on}`}>{b.label}</a>;
+          })}
+        </div>
+      </div>
+      <Preview3D config={preview} />
+    </div>
+    <ProfileChain />
+  </div>
+</section>
+
+<script>
+  const counter = document.querySelector('[data-counter]');
+  if (counter) {
+    const start = Date.now();
+    const pad = (n: number) => String(n).padStart(2, '0');
+    setInterval(() => {
+      const t = Math.floor((Date.now() - start) / 1000);
+      counter.textContent = `0:${pad(Math.floor(t / 60) % 60)}:${pad(t % 60)}`;
+    }, 1000);
+  }
+</script>

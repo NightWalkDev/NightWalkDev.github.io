@@ -1,0 +1,18 @@
+---
+import { site } from '../lib/site';
+import Node from './Node.astro';
+
+const items = site.profile;
+const pinsFor = (i: number) => (items.length === 1 ? undefined : i === 0 ? 'right' : i === items.length - 1 ? 'left' : 'both');
+---
+
+<div class="chain" aria-label="Profile" style={`--cols: ${items.map(() => 'minmax(0, 1fr)').join(' 44px ')}`}>
+  {items.map((item, i) => (
+    <>
+      {i > 0 && <div class="link" aria-hidden="true"></div>}
+      <Node title={item.title} color={item.color} pins={pinsFor(i)}>
+        <div class="txt">{item.text}</div>
+      </Node>
+    </>
+  ))}
+</div>
