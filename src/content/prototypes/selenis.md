@@ -2,8 +2,8 @@
 title: "Selenis"
 tag: "2024"
 summary: Job System
-cover: /media/solar-system.jpg
-coverAlt: Generated solar system
+cover: /media/images/thumbnails/selenis.png
+coverAlt: Selenis key art
 order: 2
 ---
 

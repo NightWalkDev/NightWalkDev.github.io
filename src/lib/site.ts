@@ -4,11 +4,21 @@ import raw from '../content/site.yaml?raw';
 
 const link = z.object({ label: z.string(), href: z.string() });
 
+const gallery = z.object({ title: z.string(), text: z.string(), color: z.string().optional() });
+
 const section = z.discriminatedUnion('type', [
   z.object({ type: z.literal('showreel'), id: z.string(), title: z.string(), note: z.string().optional(), image: z.string().optional(), youtube: z.string().optional() }),
   z.object({ type: z.literal('projects'), id: z.string(), title: z.string(), note: z.string().optional(), color: z.string().optional(), featured: z.number().default(2) }),
   z.object({ type: z.literal('prototypes'), id: z.string(), title: z.string(), note: z.string().optional(), color: z.string().optional() }),
-  z.object({ type: z.literal('art'), id: z.string(), title: z.string(), note: z.string().optional(), color: z.string().optional() }),
+  z.object({
+    type: z.literal('galleries'),
+    id: z.string(),
+    title: z.string(),
+    note: z.string().optional(),
+    color: z.string().optional(),
+    music: gallery,
+    art: gallery,
+  }),
   z.object({ type: z.literal('text'), id: z.string(), title: z.string(), note: z.string().optional(), color: z.string().optional(), text: z.string() }),
 ]);
 
@@ -23,8 +33,10 @@ const siteSchema = z.object({
       enabled: z.boolean(),
       resolution: z.number().int().min(16).max(1024),
       levels: z.number().int().min(2).max(16),
+      pattern: z.number().min(0).max(3).default(1),
+      warmth: z.number().min(-2).max(3).default(1),
     })
-    .default({ enabled: true, resolution: 176, levels: 4 }),
+    .default({ enabled: true, resolution: 176, levels: 4, pattern: 1, warmth: 1 }),
   nav: z.array(link),
   hero: z.object({
     openToWork: z.boolean(),
@@ -53,6 +65,8 @@ const siteSchema = z.object({
     }).optional(),
   }),
   sections: z.array(section),
+  musicPage: z.object({ title: z.string(), intro: z.string() }),
+  artPage: z.object({ title: z.string(), intro: z.string() }),
   contact: z.object({
     id: z.string(),
     title: z.string(),

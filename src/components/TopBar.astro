@@ -7,9 +7,11 @@ const onEveryPage = '#' + site.contact.id;
 const href = (target: string) => (target.startsWith('#') && !onHome && target !== onEveryPage ? '/' + target : target);
 ---
 
+<div class="topbar">
 <header class="top">
   <a href="/" class="logo"><span class="logo-mark" aria-hidden="true"></span>{site.hero.name}</a>
   <nav aria-label="Main">
     {site.nav.map((item) => <a class="nav" href={href(item.href)}>{item.label}</a>)}
   </nav>
 </header>
+</div>

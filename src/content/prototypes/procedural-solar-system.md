@@ -2,7 +2,7 @@
 title: "Procedural Solar System"
 tag: "2024"
 summary: Job System
-cover: /media/solar-system.jpg
+cover: /media/images/thumbnails/solar-system.png
 coverAlt: Generated solar system
 order: 2
 ---

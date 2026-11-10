@@ -1,0 +1,92 @@
+---
+import { render } from 'astro:content';
+import Base from '../layouts/Base.astro';
+import Cover from '../components/Cover.astro';
+import SectionBox from '../components/SectionBox.astro';
+import ListenLinks from '../components/ListenLinks.astro';
+import Contact from '../components/Contact.astro';
+import { site } from '../lib/site';
+import { getMusic } from '../lib/content';
+import { soundcloudPlayer, TYPE_COLORS, yearRange } from '../lib/music';
+import { resolveColor } from '../lib/colors';
+
+const releases = await Promise.all(
+  (await getMusic()).map(async (entry) => ({ entry, Content: (await render(entry)).Content })),
+);
+const page = site.musicPage;
+const range = yearRange(releases.map((r) => r.entry.data.year));
+const meta = (d: { type?: string; year?: number }) => [d.type, d.year].filter(Boolean).join(' · ');
+---
+
+<Base title={`${page.title} · ${site.hero.name}`}>
+  <main class="wrap">
+    <div class="page-head">
+      <a class="back" href="/#art">← Home</a>
+      <h1 class="display chroma">{page.title}</h1>
+      <p class="hero-intro" style="max-width: 640px">{page.intro}</p>
+      <div class="page-meta">
+        <span class="chip">{releases.length} release{releases.length === 1 ? '' : 's'}</span>
+        {range && <span class="chip">{range}</span>}
+      </div>
+    </div>
+
+    <div class="gallery" data-switcher>
+      {releases.map(({ entry, Content }, i) => {
+        const d = entry.data;
+        const player = d.links.soundcloud ? soundcloudPlayer(d.links.soundcloud) : null;
+        const typeColor = resolveColor(TYPE_COLORS[d.type ?? ''] ?? 'yellow');
+        return (
+          <section class="node spotlight" data-panel={entry.id} hidden={i > 0} aria-label={d.title}>
+            <div>
+              <div class="node-h" style={`--hc: ${typeColor.bg}; --ho: ${typeColor.on}`}>{i === 0 ? 'Latest release' : 'Release'}{meta(d) && <small>{meta(d)}</small>}</div>
+              <img class="spotlight-cover" src={d.cover} alt={d.coverAlt} />
+            </div>
+            <div class="spotlight-info">
+              <h2 class="display">{d.title}</h2>
+              {(d.type || d.year || d.tracks.length > 0) && (
+                <div class="spotlight-meta">
+                  {d.type && <span class="tag" style={`--tc: ${typeColor.bg}; --to: ${typeColor.on}`}>{d.type}</span>}
+                  <span>{[d.tracks.length && `${d.tracks.length} track${d.tracks.length === 1 ? '' : 's'}`, d.year].filter(Boolean).join(' · ')}</span>
+                </div>
+              )}
+              {player && <iframe class="player" data-src={player.src} src={i === 0 ? player.src : undefined} height={player.height} title={`${d.title} on SoundCloud`} allow="autoplay" loading="lazy"></iframe>}
+              {d.tracks.length > 0 && (
+                <ol class="tracklist">
+                  {d.tracks.map((t) => <li><span>{t.title}</span>{t.length && <span class="k">{t.length}</span>}</li>)}
+                </ol>
+              )}
+              <div class="prose"><Content /></div>
+              <ListenLinks links={d.links} />
+            </div>
+          </section>
+        );
+      })}
+
+      <SectionBox id="releases" title="All releases" note="Newest on the left · pick one to play it above" color="yellow">
+        <div class="strip" data-strip>
+          {releases.map(({ entry }) => {
+            const d = entry.data;
+            const c = resolveColor(TYPE_COLORS[d.type ?? ''] ?? 'yellow');
+            return (
+              <a class="node strip-item" href={`#${entry.id}`} data-pick={entry.id}>
+                <div class="node-h" style={`--hc: ${c.bg}; --ho: ${c.on}`}>{d.year ?? d.type ?? 'Release'}{d.year && d.type && <small>{d.type}</small>}</div>
+                <Cover src={d.cover} alt={d.coverAlt} />
+                <div class="txt">{d.title}</div>
+              </a>
+            );
+          })}
+        </div>
+      </SectionBox>
+    </div>
+
+    <div class="page-end">
+      <Contact />
+      <p class="footer">{site.footer}</p>
+    </div>
+  </main>
+</Base>
+
+<script>
+  import { initSwitcher } from '../scripts/switcher.js';
+  document.querySelectorAll<HTMLElement>('[data-switcher]').forEach(initSwitcher);
+</script>

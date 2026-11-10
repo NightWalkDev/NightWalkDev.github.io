@@ -5,12 +5,12 @@ import Showreel from '../components/Showreel.astro';
 import SectionBox from '../components/SectionBox.astro';
 import ProjectCard from '../components/ProjectCard.astro';
 import PrototypeCard from '../components/PrototypeCard.astro';
-import ArtTile from '../components/ArtTile.astro';
+import GalleryDoors from '../components/GalleryDoors.astro';
 import Contact from '../components/Contact.astro';
 import { site } from '../lib/site';
-import { getProjects, getPrototypes, getArt } from '../lib/content';
+import { getProjects, getPrototypes } from '../lib/content';
 
-const [projects, prototypes, art] = await Promise.all([getProjects(), getPrototypes(), getArt()]);
+const [projects, prototypes] = await Promise.all([getProjects(), getPrototypes()]);
 ---
 
 <Base>
@@ -38,13 +38,7 @@ const [projects, prototypes, art] = await Promise.all([getProjects(), getPrototy
             </SectionBox>
           );
         }
-        if (s.type === 'art') {
-          return (
-            <SectionBox id={s.id} title={s.title} note={s.note} color={s.color}>
-              <div class="g4">{art.map((a) => <ArtTile entry={a} />)}</div>
-            </SectionBox>
-          );
-        }
+        if (s.type === 'galleries') return <GalleryDoors {...s} />;
         return (
           <SectionBox id={s.id} title={s.title} note={s.note} color={s.color}>
             <p style="margin: 0; font-size: 17px; line-height: 1.6; max-width: 72ch">{s.text}</p>

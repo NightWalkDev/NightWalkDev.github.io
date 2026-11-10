@@ -2,8 +2,8 @@
 title: "Taromancy"
 tag: "2024"
 summary: Job System
-cover: /media/solar-system.jpg
-coverAlt: Generated solar system
+cover: /media/images/thumbnails/taromancy.png
+coverAlt: Taromancy key art
 order: 2
 ---
 

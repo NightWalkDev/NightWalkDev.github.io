@@ -4,4 +4,5 @@ const byOrder = (a: { data: { order: number } }, b: { data: { order: number } })
 
 export const getProjects = async () => (await getCollection('projects', (e) => !e.data.draft)).sort(byOrder);
 export const getPrototypes = async () => (await getCollection('prototypes', (e) => !e.data.draft)).sort(byOrder);
+export const getMusic = async () => (await getCollection('music', (e) => !e.data.draft)).sort(byOrder);
 export const getArt = async () => (await getCollection('art', (e) => !e.data.draft)).sort(byOrder);

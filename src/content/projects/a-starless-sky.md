@@ -3,8 +3,9 @@ title: "A Starless Sky"
 engine: Unreal Engine 5
 role: Boat controller, camera, interactions, map
 scope: 1 year · team of 11
-cover: /media/starless-sky.jpg
+cover: /media/images/thumbnails/a-starless-sky.png
 coverAlt: A Starless Sky key art
+trailer : https://www.youtube.com/watch?v=MvE6f_5cxbA
 order: 1
 # color: rust          # optional: overrides the header color picked from the engine
 # model: /models/my-model.glb   # optional: shows a 3D preview on this page
@@ -56,6 +57,7 @@ Liz GUILBERT
 <!--
 Ideas for this page: what the game is in two lines, what you built,
 one gif or video per system, a short code snippet, what you learned.
-Images go in public/media and are written like this:
-![Short description](/media/my-image.jpg)
+Images go in public/media/images and are written like this
+(no spaces in file names: use dashes):
+![Short description](/media/images/page-content/images/my-image.png)
 -->

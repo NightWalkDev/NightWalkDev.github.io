@@ -1,0 +1,42 @@
+---
+import Node from './Node.astro';
+import Cover from './Cover.astro';
+import SectionBox from './SectionBox.astro';
+import { getMusic, getArt } from '../lib/content';
+import { yearRange } from '../lib/music';
+
+interface Door {
+  title: string;
+  text: string;
+  color?: string;
+}
+
+interface Props {
+  id: string;
+  title: string;
+  note?: string;
+  color?: string;
+  music: Door;
+  art: Door;
+}
+
+const { id, title, note, color, music, art } = Astro.props;
+const [releases, pieces] = await Promise.all([getMusic(), getArt()]);
+const count = (n: number, word: string) => `${n} ${word}${n === 1 ? '' : 's'}`;
+const summary = (n: number, word: string, years: (number | undefined)[]) => [count(n, word), yearRange(years)].filter(Boolean).join(' · ');
+const doors = [
+  { ...music, href: '/music/', note: summary(releases.length, 'release', releases.map((r) => r.data.year)), images: releases.slice(0, 4).map((r) => ({ src: r.data.cover, alt: r.data.coverAlt })) },
+  { ...art, href: '/art/', note: summary(pieces.length, 'piece', pieces.map((p) => p.data.year)), images: pieces.slice(0, 4).map((p) => ({ src: p.data.image, alt: p.data.imageAlt })) },
+];
+---
+
+<SectionBox id={id} title={title} note={note} color={color}>
+  <div class="g2">
+    {doors.map((door) => (
+      <Node href={door.href} title={door.title} note={door.note} color={door.color}>
+        <div class="collage">{door.images.map((img) => <Cover src={img.src} alt={img.alt} />)}</div>
+        <div class="row door-row">{door.text}<span class="display door-open">Open →</span></div>
+      </Node>
+    ))}
+  </div>
+</SectionBox>

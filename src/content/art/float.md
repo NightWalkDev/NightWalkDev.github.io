@@ -1,7 +1,8 @@
 ---
 title: Float
-image: /media/art-float.jpg
+image: /media/images/gallery-art/float.png
 imageAlt: Float artwork
-order: 4
-# link: https://soundcloud.com/   # optional: where the tile leads (a track, a gallery...)
+order: 2              # 1 = shown first
+# year: 2025
+# tools: Photoshop
 ---

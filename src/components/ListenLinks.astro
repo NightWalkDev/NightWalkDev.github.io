@@ -1,0 +1,15 @@
+---
+import { listenLinks } from '../lib/music';
+
+interface Props {
+  links: Parameters<typeof listenLinks>[0];
+}
+
+const links = listenLinks(Astro.props.links);
+---
+
+{links.length > 0 && (
+  <div class="pills">
+    {links.map((l) => <a class="pill" href={l.href} target="_blank" rel="noopener" style={`--pc: ${l.color}`}><i></i>{l.label} ↗</a>)}
+  </div>
+)}

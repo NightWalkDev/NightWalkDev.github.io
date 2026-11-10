@@ -14,7 +14,9 @@ Everything you normally change is a content file. Save it with `npm run dev` run
 | Which header color each engine gets | `src/content/site.yaml` → `engineColors` |
 | A game project | `src/content/projects/<name>.md` |
 | A prototype | `src/content/prototypes/<name>.md` |
-| A music or art tile | `src/content/art/<name>.md` |
+| A music release (album, EP, single) | `src/content/music/<name>.md` |
+| An art piece | `src/content/art/<name>.md` |
+| Text at the top of the Music and Art pages | `src/content/site.yaml` → `musicPage`, `artPage` |
 | The theme colors themselves | `src/styles/theme.css` |
 | Images, gifs, clips | `public/media/` |
 | 3D models (.glb) | `public/models/` |
@@ -32,7 +34,20 @@ To change what "rust" looks like everywhere, edit `--rust` in `src/styles/theme.
 3. Set `order:` to place it (1 = first). The first two projects (see `featured` in site.yaml) get the big top row.
 4. Write the page below the second `---` in Markdown.
 
-Prototypes and art tiles work the same way in their own folders. To hide something without deleting it, add `draft: true`.
+Prototypes, music releases and art pieces work the same way in their own folders. To hide something without deleting it, add `draft: true`.
+
+## Music releases
+
+Each release is a file in `src/content/music/`. `order: 1` is the newest: it opens first on the Music page and sits on the left of the timeline.
+
+- `type` (Album, EP or Single) and `year` are optional; they show in the headers and the timeline when set.
+- Under `links`, fill only the platforms where the release exists: each filled link gets a button, empty ones don't. The `soundcloud` link also puts the SoundCloud player on the page (a track or a set/playlist link both work).
+- `tracks` is optional: your own tracklist with lengths. A SoundCloud set already lists its tracks in the player.
+- Text written under the second `---` shows next to the player (a short description, credits...).
+
+## Art pieces
+
+Each piece is a file in `src/content/art/`. `year` and `tools` are optional; text under the second `---` becomes the caption in the viewer.
 
 ## Writing a page (Markdown)
 

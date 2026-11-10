@@ -1,0 +1,71 @@
+---
+import { render } from 'astro:content';
+import Base from '../layouts/Base.astro';
+import Cover from '../components/Cover.astro';
+import SectionBox from '../components/SectionBox.astro';
+import Contact from '../components/Contact.astro';
+import { site } from '../lib/site';
+import { getArt } from '../lib/content';
+import { yearRange } from '../lib/music';
+
+const pieces = await Promise.all(
+  (await getArt()).map(async (entry) => ({ entry, Content: (await render(entry)).Content })),
+);
+const page = site.artPage;
+const range = yearRange(pieces.map((p) => p.entry.data.year));
+---
+
+<Base title={`${page.title} · ${site.hero.name}`}>
+  <main class="wrap">
+    <div class="page-head">
+      <a class="back" href="/#art">← Home</a>
+      <h1 class="display chroma">{page.title}</h1>
+      <p class="hero-intro" style="max-width: 640px">{page.intro}</p>
+      <div class="page-meta">
+        <span class="chip">{pieces.length} piece{pieces.length === 1 ? '' : 's'}</span>
+        {range && <span class="chip">{range}</span>}
+      </div>
+    </div>
+
+    <div class="gallery" data-switcher data-arrow-keys>
+      {pieces.map(({ entry, Content }, i) => {
+        const d = entry.data;
+        return (
+          <section class="node viewer" data-panel={entry.id} hidden={i > 0} aria-label={d.title}>
+            <div class="viewer-stage"><img src={d.image} alt={d.imageAlt} loading={i === 0 ? 'eager' : 'lazy'} /></div>
+            <div class="viewer-info">
+              <div class="node-h" style="--hc: var(--yellow); --ho: var(--on-yellow)">{d.title}<small>{i + 1} / {pieces.length}</small></div>
+              {d.year && <div class="row"><span class="k">Year</span>{d.year}</div>}
+              {d.tools && <div class="row"><span class="k">Tools</span>{d.tools}</div>}
+              <div class="txt prose"><Content /></div>
+              <div class="viewer-nav">
+                <button type="button" class="btn" data-step="-1" style="--c: var(--panel2); --on: var(--ink)">← Prev</button>
+                <button type="button" class="btn" data-step="1" style="--c: var(--yellow); --on: var(--on-yellow)">Next →</button>
+              </div>
+            </div>
+          </section>
+        );
+      })}
+
+      <SectionBox id="pieces" title="All pieces" note="Click a thumbnail · arrow keys work too" color="yellow">
+        <div class="strip" data-strip>
+          {pieces.map(({ entry }) => (
+            <a class="node strip-item strip-thumb" href={`#${entry.id}`} data-pick={entry.id} aria-label={entry.data.title}>
+              <Cover src={entry.data.image} alt="" />
+            </a>
+          ))}
+        </div>
+      </SectionBox>
+    </div>
+
+    <div class="page-end">
+      <Contact />
+      <p class="footer">{site.footer}</p>
+    </div>
+  </main>
+</Base>
+
+<script>
+  import { initSwitcher } from '../scripts/switcher.js';
+  document.querySelectorAll<HTMLElement>('[data-switcher]').forEach(initSwitcher);
+</script>

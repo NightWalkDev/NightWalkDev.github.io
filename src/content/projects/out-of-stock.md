@@ -3,7 +3,7 @@ title: "Out of Stock !"
 engine: Unity
 role: Player controllers, interactions, customization
 scope: 4 months · team of 10 · demo on Steam
-cover: /media/out-of-stock.jpg
+cover: /media/images/thumbnails/out-of-stock-2.jpg
 coverAlt: Out of Stock! key art
 trailer: https://www.youtube.com/watch?v=2ErvaO8SYFg
 order: 2
@@ -44,6 +44,7 @@ My tasks :
 <!--
 Ideas for this page: what the game is in two lines, what you built,
 one gif or video per system, a short code snippet, what you learned.
-Images go in public/media and are written like this:
-![Short description](/media/my-image.jpg)
+Images go in public/media/images and are written like this
+(no spaces in file names: use dashes):
+![Short description](/media/images/page-content/images/my-image.png)
 -->
