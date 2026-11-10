@@ -1,16 +1,16 @@
 ---
 import { site } from '../lib/site';
 import Node from './Node.astro';
-import RoundLink from './RoundLink.astro';
+import ScreenButton from './ScreenButton.astro';
 
 const { contact } = site;
 ---
 
 <section id={contact.id} style="max-width: 700px; scroll-margin-top: 16px" aria-label={contact.title}>
   <Node title={contact.title} color={contact.color}>
-    <div style="padding: 20px; display: flex; flex-direction: column; gap: 18px">
-      <div class="rl-row">
-        {contact.links.map((l) => <RoundLink {...l} />)}
+    <div style="padding: 22px 20px 20px; display: flex; flex-direction: column; gap: 18px">
+      <div class="btn-row-links">
+        {contact.links.map((l) => <ScreenButton label={l.label} href={l.href} icon={l.icon} color={l.color} />)}
       </div>
       {contact.text && <p style="margin: 0; font-size: 15px; color: var(--dim)">{contact.text}</p>}
     </div>

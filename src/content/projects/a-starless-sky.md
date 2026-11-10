@@ -16,8 +16,7 @@ order: 1
 
 ## Overview
 
-Overview
-"A Starless Sky" is a single player, 3rd person exploration game in which you play as a lone sailor in a quest to restore the fallen stars.
+A Starless Sky is a single player, 3rd person exploration game in which you play as a lone sailor in a quest to restore the fallen stars.
 
 My tasks :
 - Make a **player boat controller** with satisfying flow and controls to travel across the open world

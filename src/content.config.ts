@@ -49,7 +49,7 @@ const music = defineCollection({
     type: z.enum(['Album', 'EP', 'Single']).optional(),
     year: z.number().int().optional(),
     links: z
-      .object({ soundcloud: z.string(), spotify: z.string(), youtube: z.string(), bandcamp: z.string() })
+      .object({ soundcloud: z.string(), spotify: z.string(), youtube: z.string(), youtubeMusic: z.string() })
       .partial()
       .nullish()
       .transform((links) => links ?? {}),

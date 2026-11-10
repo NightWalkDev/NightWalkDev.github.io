@@ -36,12 +36,18 @@ To change what "rust" looks like everywhere, edit `--rust` in `src/styles/theme.
 
 Prototypes, music releases and art pieces work the same way in their own folders. To hide something without deleting it, add `draft: true`.
 
+## Link buttons
+
+Every external link (contact box, music listen links) is a little screen button with the site's logo in its color. In `site.yaml`:
+- `contact.links`: each link has a `label` (shown on hover), `href`, `icon` (an SVG in `public/media/icons/`) and `color`.
+- `linkButtons`: `flash` (click flash brightness, 0 to 1) and `wiggle` (hover tilt in degrees).
+
 ## Music releases
 
 Each release is a file in `src/content/music/`. `order: 1` is the newest: it opens first on the Music page and sits on the left of the timeline.
 
 - `type` (Album, EP or Single) and `year` are optional; they show in the headers and the timeline when set.
-- Under `links`, fill only the platforms where the release exists: each filled link gets a button, empty ones don't. The `soundcloud` link also puts the SoundCloud player on the page (a track or a set/playlist link both work).
+- Under `links`, fill only the platforms where the release exists (`soundcloud`, `spotify`, `youtube`, `youtubeMusic`): each filled link gets a button, empty ones don't. The `soundcloud` link also puts the SoundCloud player on the page (a track or a set/playlist link both work).
 - `tracks` is optional: your own tracklist with lengths. A SoundCloud set already lists its tracks in the player.
 - Text written under the second `---` shows next to the player (a short description, credits...).
 

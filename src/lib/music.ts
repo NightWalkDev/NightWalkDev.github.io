@@ -1,8 +1,8 @@
 const PLATFORMS = {
-  soundcloud: { label: 'SoundCloud', color: '#FF8A3D' },
-  spotify: { label: 'Spotify', color: '#1ED760' },
-  youtube: { label: 'YouTube', color: '#FF4B3E' },
-  bandcamp: { label: 'Bandcamp', color: '#34D3E8' },
+  soundcloud: { label: 'SoundCloud', color: '#FF5500', icon: '/media/icons/soundcloud.svg' },
+  spotify: { label: 'Spotify', color: '#1ED760', icon: '/media/icons/spotify.svg' },
+  youtube: { label: 'YouTube', color: '#FF0000', icon: '/media/icons/yt.svg' },
+  youtubeMusic: { label: 'YouTube Music', color: '#FF0000', icon: '/media/icons/ytmusic.svg' },
 } as const;
 
 type Links = Partial<Record<keyof typeof PLATFORMS, string>>;

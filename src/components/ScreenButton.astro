@@ -1,0 +1,24 @@
+---
+interface Props {
+  label: string;
+  href: string;
+  icon: string;
+  color: string;
+  size?: 'large' | 'small';
+}
+
+const { label, href, icon, color, size = 'large' } = Astro.props;
+const opensNewTab = href.startsWith('http');
+const mask = `url(${icon}) center / contain no-repeat`;
+---
+
+<span class:list={['sb-wrap', `sb-${size}`]} data-label={label}>
+  <a class="sb" href={href} aria-label={`${label} (opens outside this site)`} style={`--c: ${color}`} target={opensNewTab ? '_blank' : undefined} rel={opensNewTab ? 'noopener' : undefined}>
+    <span class="sb-osd" aria-hidden="true">▶</span>
+    <svg class="sb-ext" viewBox="0 0 5 5" aria-hidden="true"><path d="M1 0h4v4h-1v-2h-1v1h-1v1h-1v1h-1v-1h1v-1h1v-1h1v-1h-2z" fill="currentColor" /></svg>
+    <span class="sb-screen"><span class="sb-icon" aria-hidden="true" style={`-webkit-mask: ${mask}; mask: ${mask}`}></span></span>
+    <span class="sb-roll" aria-hidden="true"></span>
+    <span class="sb-ring" aria-hidden="true"></span>
+    <span class="sb-flash" aria-hidden="true"></span>
+  </a>
+</span>

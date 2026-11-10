@@ -14,9 +14,14 @@ engineColors:
 dither:
   enabled: true      # false = always show the full-quality images
   resolution: 176    # width of the dithered image in pixels: lower = bigger pixels
-  levels: 4          # shades per color channel: lower = harsher, more retro
-  pattern: 1         # strength of the dot pattern: 0 = flat color bands, 1 = default, 2 = grainier
+  levels: 8          # shades per color channel: lower = harsher, more retro
+  pattern: 0.5        # strength of the dot pattern: 0 = flat color bands, 1 = default, 2 = grainier
   warmth: 1          # color tint: 0 = neutral, 1 = default warm, 2 = warmer, negative = cooler
+
+# The little screen buttons used for every external link (contact, music)
+linkButtons:
+  flash: 0.45        # brightness of the flash when a button is clicked: 0 = none, 1 = full white
+  wiggle: 2.25       # how far the button tilts (degrees) when the pointer arrives: 0 = no wiggle
 
 nav:
   - label: Projects
@@ -128,15 +133,15 @@ contact:
   links:
     - label: Email
       href: mailto:victorregard.pro@gmail.com
-      icon: mail
-      color: "#34D3E8"
+      icon: /media/icons/gmail.svg
+      color: "#EA4335"
     - label: LinkedIn
       href: https://www.linkedin.com/in/victor-regard-2622bb273/
-      icon: person
-      color: "#FF8A3D"
+      icon: /media/icons/linkedin.svg
+      color: "#0A66C2"
     - label: GitHub
       href: https://github.com/V-RGD
-      icon: code
-      color: "#F2E6CC"
+      icon: /media/icons/github.svg
+      color: "#F2E6CC"      # GitHub's own near-black would disappear on the dark site
 
 footer: © 2026 Victor Regard

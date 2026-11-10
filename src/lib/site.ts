@@ -28,6 +28,7 @@ const siteSchema = z.object({
   title: z.string(),
   description: z.string(),
   engineColors: z.record(z.string(), z.string()).default({}),
+  linkButtons: z.object({ flash: z.number().min(0).max(1), wiggle: z.number().min(0).max(10) }).default({ flash: 0.45, wiggle: 2.25 }),
   dither: z
     .object({
       enabled: z.boolean(),
@@ -72,7 +73,7 @@ const siteSchema = z.object({
     title: z.string(),
     color: z.string().optional(),
     text: z.string().optional(),
-    links: z.array(link.extend({ icon: z.enum(['mail', 'person', 'code', 'play', 'music', 'link']).default('link'), color: z.string() })),
+    links: z.array(link.extend({ icon: z.string(), color: z.string() })),
   }),
   footer: z.string(),
 });
