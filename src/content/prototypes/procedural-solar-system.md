@@ -1,7 +1,7 @@
 ---
 title: "Procedural Solar System"
 tag: "2024"
-summary: Job System
+summary: Mesh Generation, Biomes
 cover: /media/images/thumbnails/solar-system.png
 coverAlt: Generated solar system
 order: 2

@@ -1,7 +1,7 @@
 ---
 title: "The Symbolists"
 tag: "2025"
-summary: Tactics, grid combat
+summary: GDD, Tactical, Grid combat & Navigation
 cover: /media/images/thumbnails/symbolists.png
 coverAlt: The Symbolists key art
 order: 1

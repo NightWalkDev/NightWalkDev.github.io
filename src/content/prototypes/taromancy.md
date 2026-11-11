@@ -1,7 +1,7 @@
 ---
 title: "Taromancy"
 tag: "2024"
-summary: Job System
+summary: Card Roguelite
 cover: /media/images/thumbnails/taromancy.png
 coverAlt: Taromancy key art
 order: 2

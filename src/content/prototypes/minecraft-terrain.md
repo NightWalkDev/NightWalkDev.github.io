@@ -1,7 +1,7 @@
 ---
-title: "Minecraft Terrain"
+title: "Minecraft Terrain Generation"
 tag: "Tech"
-summary: Procedural generation
+summary: Procedural, Biomes, UV Mapping
 cover: /media/images/thumbnails/minecraft-generation.png
 coverAlt: Voxel terrain generation
 order: 4

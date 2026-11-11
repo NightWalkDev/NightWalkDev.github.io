@@ -1,7 +1,7 @@
 ---
 title: "Hanamori"
 tag: "2023"
-summary: Online card game
+summary: Online Multiplayer Card Game
 cover: /media/images/thumbnails/hanamori.png
 coverAlt: Hanamori card table at dusk
 order: 3

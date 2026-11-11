@@ -1,7 +1,7 @@
 ---
 title: "Selenis"
 tag: "2024"
-summary: Job System
+summary: Retro Art, Shaders, Post Process, 3D modeling
 cover: /media/images/thumbnails/selenis.png
 coverAlt: Selenis key art
 order: 2
