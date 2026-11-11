@@ -48,13 +48,13 @@ hero:
 # The chain of boxes under the hero
 profile:
   - title: Focus
-    color: mauve
+    color: wine
     text: 3C · Game feel · Haptics
   - title: Engines
-    color: coral
+    color: plum
     text: Unity · C# · Unreal Engine 5 · C++ · Blueprints
   - title: Based in
-    color: plum
+    color: mauve
     text: Paris, France · Remote friendly
 
 # The 3D preview next to the hero. scene: solar or model
