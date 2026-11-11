@@ -11,7 +11,7 @@ const href = (target: string) => (target.startsWith('#') && !onHome && target !=
 <header class="top">
   <a href="/" class="logo"><span class="logo-mark" aria-hidden="true"></span>{site.hero.name}</a>
   <nav aria-label="Main">
-    {site.nav.map((item) => <a class="nav" href={href(item.href)}>{item.label}</a>)}
+    {site.nav.map((item) => <a class="nav" href={href(item.href)} aria-current={item.href.startsWith('/') && Astro.url.pathname.startsWith(item.href) ? 'page' : undefined}>{item.label}</a>)}
   </nav>
 </header>
 </div>

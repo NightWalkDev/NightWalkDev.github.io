@@ -28,8 +28,10 @@ nav:
     href: "#projects"
   - label: Prototypes
     href: "#prototypes"
-  - label: Music & Art
-    href: "#art"
+  - label: Music
+    href: /music/
+  - label: Art
+    href: /art/
   - label: Contact
     href: "#contact"
 
@@ -120,7 +122,7 @@ sections:
 # The two gallery pages (/music/ and /art/)
 musicPage:
   title: Music
-  intro: Synth music and electronic tracks, produced in FL Studio.
+  intro: You'll find here all the music I made, using FL Studio. I usually use synths and retro-inspired instruments, but I like to experiment with other sounds to try to make each track unique in its own way.
 artPage:
   title: Digital art
   intro: Illustrations and photo-composites made in Photoshop, separate from my album covers.

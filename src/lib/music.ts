@@ -1,7 +1,6 @@
 const PLATFORMS = {
   soundcloud: { label: 'SoundCloud', color: '#FF5500', icon: '/media/icons/soundcloud.svg' },
   spotify: { label: 'Spotify', color: '#1ED760', icon: '/media/icons/spotify.svg' },
-  youtube: { label: 'YouTube', color: '#FF0000', icon: '/media/icons/yt.svg' },
   youtubeMusic: { label: 'YouTube Music', color: '#FF0000', icon: '/media/icons/ytmusic.svg' },
 } as const;
 
@@ -15,9 +14,8 @@ export function listenLinks(links: Links) {
 }
 
 export function soundcloudPlayer(url: string) {
-  const isSet = url.includes('/sets/');
-  const params = new URLSearchParams({ url, color: '#ffc83d', visual: 'true', show_comments: 'false', show_reposts: 'false', hide_related: 'true' });
-  return { src: `https://w.soundcloud.com/player/?${params}`, height: isSet ? 450 : 300 };
+  const params = new URLSearchParams({ url, color: '#ffc83d', visual: 'false', show_artwork: 'false', show_comments: 'false', show_reposts: 'false', hide_related: 'true', show_teaser: 'false' });
+  return { src: `https://w.soundcloud.com/player/?${params}`, height: 166 };
 }
 
 export const TYPE_COLORS: Record<string, string> = { Album: 'rust', EP: 'teal', Single: 'yellow' };

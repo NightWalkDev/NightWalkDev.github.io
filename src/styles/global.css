@@ -28,6 +28,7 @@ a:hover { color: var(--accent); }
 .logo-mark { width: 14px; height: 14px; background: var(--rust); box-shadow: 4px 0 0 var(--yellow); }
 .top nav { display: flex; flex-wrap: wrap; gap: 8px; }
 .nav { display: inline-flex; align-items: center; min-height: 40px; padding: 0 16px; font-weight: 600; font-size: 14px; text-decoration: none; box-shadow: inset 0 0 0 2px color-mix(in srgb, var(--ink) 28%, transparent); transition: transform 0.08s steps(2), box-shadow 0.1s, background 0.1s; }
+a.nav[aria-current='page'] { color: var(--on-yellow); background: var(--accent); box-shadow: inset 0 0 0 2px var(--accent); }
 a.nav:hover { color: var(--on-yellow); background: var(--accent); box-shadow: inset 0 0 0 2px var(--accent), 4px 4px 0 var(--shadow); transform: translate(-2px, -2px); }
 
 /* VHS overlay */
@@ -177,9 +178,9 @@ a.node { display: flex; flex-direction: column; text-decoration: none; color: va
 /* Music and art pages */
 .gallery { display: flex; flex-direction: column; gap: 48px; margin-bottom: 56px; }
 .gallery [hidden] { display: none !important; }
-.spotlight { display: grid; grid-template-columns: minmax(0, 420px) minmax(0, 1fr); align-items: start; }
+.spotlight { display: grid; grid-template-columns: minmax(0, 420px) minmax(0, 1fr); align-items: start; height: 456px; }
 .spotlight-cover { display: block; width: calc(100% - 24px); margin: 12px; aspect-ratio: 1 / 1; object-fit: cover; background: var(--shadow); }
-.spotlight-info { display: flex; flex-direction: column; gap: 16px; padding: 28px 28px 24px; min-width: 0; }
+.spotlight-info { display: flex; flex-direction: column; gap: 16px; padding: 28px 28px 24px; min-width: 0; height: 100%; overflow-y: auto; }
 .spotlight-info h2 { margin: 0; font-size: clamp(36px, 4.5vw, 56px); line-height: 0.95; letter-spacing: -0.02em; }
 .spotlight-meta { display: flex; flex-wrap: wrap; align-items: center; gap: 10px; color: var(--dim); }
 .player { width: 100%; border: 0; display: block; background: var(--shadow); }
@@ -214,6 +215,8 @@ a.node { display: flex; flex-direction: column; text-decoration: none; color: va
 
 @media (max-width: 980px) {
   .chain, .hero-grid, .page-grid, .spotlight, .viewer { grid-template-columns: minmax(0, 1fr); row-gap: 16px; }
+  .spotlight { height: auto; }
+  .spotlight-info { height: auto; overflow: visible; }
   .viewer-stage { border-radius: 4px 4px 0 0; }
   .viewer-stage img { height: auto; max-height: 70vh; }
   .chain > .link { display: none; }
