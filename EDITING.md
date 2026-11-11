@@ -6,7 +6,7 @@ Everything you normally change is a content file. Save it with `npm run dev` run
 
 | To change… | Edit |
 | --- | --- |
-| Name, role, intro, Open to work badge, hero buttons | `src/content/site.yaml` → `hero` |
+| Name, role, intro, Open to work badge (text and `badgeColor`), hero buttons | `src/content/site.yaml` → `hero` |
 | The Focus / Engines / Based in boxes | `src/content/site.yaml` → `profile` |
 | Home page sections: order, titles, notes, colors | `src/content/site.yaml` → `sections` |
 | Contact links and text | `src/content/site.yaml` → `contact` |
@@ -16,16 +16,29 @@ Everything you normally change is a content file. Save it with `npm run dev` run
 | A prototype | `src/content/prototypes/<name>.md` |
 | A music release (album, EP, single) | `src/content/music/<name>.md` |
 | An art piece | `src/content/art/<name>.md` |
-| Text at the top of the Music and Art pages | `src/content/site.yaml` → `musicPage`, `artPage` |
+| Text and color of the Music and Art pages | `src/content/site.yaml` → `musicPage`, `artPage` |
 | The theme colors themselves | `src/styles/theme.css` |
 | Images, gifs, clips | `public/media/` |
 | 3D models (.glb) | `public/models/` |
 
 ## Colors
 
-Anywhere a `color` is asked, write a theme color name (`yellow`, `rust`, `green`, `cream`, `teal`, `panel`) or a hex value (`"#34D3E8"`, with quotes). Text on top of the color is picked automatically.
+Anywhere a `color` is asked, write a theme color name or a hex value (`"#34D3E8"`, with quotes). Text on top of a theme color is set in `theme.css`; on a hex value it is picked automatically.
 
-To change what "rust" looks like everywhere, edit `--rust` in `src/styles/theme.css`.
+| Name | Used for |
+| --- | --- |
+| `crimson` | Game projects, View projects button, Album tag |
+| `plum` | Unreal Engine cards, Based in box |
+| `cream` | Contact |
+| `amber` | Prototypes, Single tag, hover highlight |
+| `orange` | Music |
+| `mint` | Art, EP tag |
+| `coral` | Music & digital art box, Engines box |
+| `mauve` | Unity cards, Focus box, Open to work badge |
+| `wine` | Only in the diamond band under the hero |
+| `panel` | Neutral dark header |
+
+To change what "crimson" looks like everywhere, edit `--crimson` (and `--on-crimson`, its text color) in `src/styles/theme.css`. The old names `rust`, `yellow`, `green` and `teal` still work and map to `crimson`, `amber`, `mint` and `mint`.
 
 ## Add a project
 
@@ -38,9 +51,7 @@ Prototypes, music releases and art pieces work the same way in their own folders
 
 ## Link buttons
 
-Every external link (contact box, music listen links) is a little screen button with the site's logo in its color. In `site.yaml`:
-- `contact.links`: each link has a `label` (shown on hover), `href`, `icon` (an SVG in `public/media/icons/`) and `color`.
-- `linkButtons`: `flash` (click flash brightness, 0 to 1) and `wiggle` (hover tilt in degrees).
+Every external link (contact box, music listen links) is a button like View projects, showing the site's logo in black. In `site.yaml` → `contact.links`, each link has a `label` (shown in grey under the button on hover), `href`, `icon` (an SVG in `public/media/icons/`) and `color` (the palette color closest to that site's own color). The music platforms' colors are in `src/lib/music.ts`.
 
 ## Music releases
 
@@ -78,7 +89,7 @@ Code blocks get syntax highlighting: write three backticks followed by the langu
 
 - Prefer short `.mp4` clips over gifs: same clip, often 5 to 10 times lighter.
 - Long videos: upload to YouTube and embed them.
-- Images are shown dithered on the home page and in full on hover. Nothing to do on your side: the dithering is automatic. Its look is set by `dither` in `site.yaml` (`enabled`, `resolution` = pixel size, `levels` = number of shades).
+- Card images get CRT scanlines that disappear on hover. Nothing to do on your side. Their look is set by `scanlines` in `site.yaml` (`enabled`, `darkness`, `spacing`).
 
 ## The 3D preview
 

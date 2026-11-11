@@ -1,5 +1,5 @@
 # Site-wide settings and the home page.
-# Colors: use a theme color name (rust, yellow, green, teal, cream, panel)
+# Colors: use a theme color name (crimson, wine, plum, mauve, coral, orange, amber, mint, cream, panel)
 # or any hex value like "#34D3E8". Theme colors live in src/styles/theme.css.
 
 title: Victor Regard · Gameplay / 3C Programmer
@@ -7,21 +7,14 @@ description: Gameplay / 3C programmer working in Unity and Unreal Engine. Portfo
 
 # Header color of each project card, picked from its engine (a project can override it)
 engineColors:
-  Unreal Engine 5: rust
-  Unity: teal
+  Unreal Engine 5: plum
+  Unity: wine
 
-# Dithered look of the card images (they show in full quality on hover)
-dither:
-  enabled: true      # false = always show the full-quality images
-  resolution: 176    # width of the dithered image in pixels: lower = bigger pixels
-  levels: 8          # shades per color channel: lower = harsher, more retro
-  pattern: 0.5        # strength of the dot pattern: 0 = flat color bands, 1 = default, 2 = grainier
-  warmth: 1          # color tint: 0 = neutral, 1 = default warm, 2 = warmer, negative = cooler
-
-# The little screen buttons used for every external link (contact, music)
-linkButtons:
-  flash: 0.45        # brightness of the flash when a button is clicked: 0 = none, 1 = full white
-  wiggle: 2.25       # how far the button tilts (degrees) when the pointer arrives: 0 = no wiggle
+# CRT scanlines over the card images (they disappear on hover)
+scanlines:
+  enabled: true
+  darkness: 0.22     # how dark the lines are: 0 = invisible, 1 = black
+  spacing: 3         # distance between two lines, in pixels
 
 nav:
   - label: Projects
@@ -38,6 +31,7 @@ nav:
 hero:
   openToWork: true
   badge: Open to work · France / Remote
+  badgeColor: mauve     # color of the Open to work label
   name: Victor Regard
   role: Gameplay / 3C Programmer
   intro: I'm a game programmer specialized in 3C, haptics, and game feel. I mainly use Unity and Unreal Engine to build characters and interactions that feel good in your hands. I also make synth music and digital art for my passion projects.
@@ -46,7 +40,7 @@ hero:
   buttons:
     - label: View projects
       href: "#projects"
-      color: yellow
+      color: crimson
     - label: Contact
       href: "#contact"
       color: cream
@@ -54,13 +48,13 @@ hero:
 # The chain of boxes under the hero
 profile:
   - title: Focus
-    color: green
+    color: mauve
     text: 3C · Game feel · Haptics
   - title: Engines
-    color: rust
+    color: coral
     text: Unity · C# · Unreal Engine 5 · C++ · Blueprints
   - title: Based in
-    color: cream
+    color: plum
     text: Paris, France · Remote friendly
 
 # The 3D preview next to the hero. scene: solar or model
@@ -70,17 +64,17 @@ preview:
   scene: solar
   model: /models/eye.glb
   modelFront: "-Z"
-  modelColor: "#FFC83D"
+  modelColor: "#F9B143"
   light: { angle: 45, height: -65 }
   camera: { zoom: 0.7, zoomMin: 0.2, zoomMax: 2, tilt: 25, spin: 0, ortho: false }
   solar:
-    sun: { color: "#FFC83D", size: 0.5, glow: 1 }
-    orbits: { show: true, color: "#A89A84", speed: 0.3, speedRatio: 0.5, spacing: 0.5, spacingRatio: 1.3 }
+    sun: { color: "#F9B143", size: 0.5, glow: 1 }
+    orbits: { show: true, color: "#B89AA0", speed: 0.3, speedRatio: 0.5, spacing: 0.5, spacingRatio: 1.3 }
     planets:
-      - { color: "#E04A2F", size: 0.10 }
-      - { color: "#3E9C8F", size: 0.15, atmosphere: "#7FE6D6" }
-      - { color: "#9AAA45", size: 0.12 }
-      - { color: "#FFDF9D", size: 0.20, ring: "#FFC83D" }
+      - { color: "#F45D50", size: 0.10 }
+      - { color: "#2FA98C", size: 0.15, atmosphere: "#8FE6CC" }
+      - { color: "#8A4373", size: 0.12 }
+      - { color: "#F3DDB8", size: 0.20, ring: "#FC8134" }
 
 # Home page sections, top to bottom. Reorder, remove or duplicate freely.
 # type: showreel | projects | prototypes | art | text
@@ -96,54 +90,56 @@ sections:
     id: projects
     title: Game projects
     note: Team productions · hover to see the full image
-    color: rust
+    color: crimson
     featured: 2          # how many cards get the big top row
 
   - type: prototypes
     id: prototypes
     title: Prototypes & experiments
     note: Solo projects
-    color: green
+    color: amber
 
   - type: galleries     # two doors leading to the Music and Art pages
     id: art
     title: Music & digital art
     note: FL Studio · Photoshop
-    color: yellow
+    color: coral
     music:
       title: Music
       text: Albums, EPs and singles
-      color: yellow
+      color: orange
     art:
       title: Digital art
       text: Illustrations and photo-composites
-      color: teal
+      color: mint
 
 # The two gallery pages (/music/ and /art/)
 musicPage:
   title: Music
+  color: orange
   intro: You'll find here all the music I made, using FL Studio. I usually use synths and retro-inspired instruments, but I like to experiment with other sounds to try to make each track unique in its own way.
 artPage:
   title: Digital art
+  color: mint
   intro: Illustrations and photo-composites made in Photoshop, separate from my album covers.
 
 contact:
   id: contact
   title: Contact
-  color: rust
+  color: cream
   text: "Business inquiries: victorregard.pro@gmail.com"
   links:
     - label: Email
       href: mailto:victorregard.pro@gmail.com
       icon: /media/icons/gmail.svg
-      color: "#EA4335"
+      color: coral          # nearest palette color to each site's own color
     - label: LinkedIn
       href: https://www.linkedin.com/in/victor-regard-2622bb273/
       icon: /media/icons/linkedin.svg
-      color: "#0A66C2"
+      color: mint
     - label: GitHub
       href: https://github.com/V-RGD
       icon: /media/icons/github.svg
-      color: "#F2E6CC"      # GitHub's own near-black would disappear on the dark site
+      color: cream
 
 footer: © 2026 Victor Regard

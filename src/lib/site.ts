@@ -28,20 +28,14 @@ const siteSchema = z.object({
   title: z.string(),
   description: z.string(),
   engineColors: z.record(z.string(), z.string()).default({}),
-  linkButtons: z.object({ flash: z.number().min(0).max(1), wiggle: z.number().min(0).max(10) }).default({ flash: 0.45, wiggle: 2.25 }),
-  dither: z
-    .object({
-      enabled: z.boolean(),
-      resolution: z.number().int().min(16).max(1024),
-      levels: z.number().int().min(2).max(16),
-      pattern: z.number().min(0).max(3).default(1),
-      warmth: z.number().min(-2).max(3).default(1),
-    })
-    .default({ enabled: true, resolution: 176, levels: 4, pattern: 1, warmth: 1 }),
+  scanlines: z
+    .object({ enabled: z.boolean(), darkness: z.number().min(0).max(1), spacing: z.number().min(2).max(12) })
+    .default({ enabled: true, darkness: 0.22, spacing: 3 }),
   nav: z.array(link),
   hero: z.object({
     openToWork: z.boolean(),
     badge: z.string(),
+    badgeColor: z.string().default('mauve'),
     name: z.string(),
     role: z.string(),
     intro: z.string(),
@@ -66,8 +60,8 @@ const siteSchema = z.object({
     }).optional(),
   }),
   sections: z.array(section),
-  musicPage: z.object({ title: z.string(), intro: z.string() }),
-  artPage: z.object({ title: z.string(), intro: z.string() }),
+  musicPage: z.object({ title: z.string(), intro: z.string(), color: z.string().default('orange') }),
+  artPage: z.object({ title: z.string(), intro: z.string(), color: z.string().default('mint') }),
   contact: z.object({
     id: z.string(),
     title: z.string(),

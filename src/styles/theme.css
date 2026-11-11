@@ -1,28 +1,37 @@
 /*
   Theme colors. Change a value here and every place using that color updates.
   Each color has an "on-" partner: the text color used on top of it.
-  To add a color: add --name and --on-name, then use "name" in your content files.
+  To add a color: add --name and --on-name, then add the name to THEME_COLORS in src/lib/colors.ts.
 */
 :root {
-  --bg: #141110;
-  --panel: #201a17;
-  --panel2: #2a221e;
-  --ink: #f2e6cc;
-  --dim: #a89a84;
-  --shadow: #060504;
-  --grid: rgba(242, 230, 204, 0.08);
-  --accent: var(--yellow);
+  --bg: #12080f;
+  --panel: #1f0f1b;
+  --panel2: #2a1424;
+  --ink: #f9e3c0;
+  --dim: #b89aa0;
+  --shadow: #060205;
+  --grid: rgba(249, 227, 192, 0.07);
+  --accent: var(--amber);
+  --on-accent: var(--on-amber);
 
-  --yellow: #ffc83d;
-  --on-yellow: #141110;
-  --rust: #e04a2f;
-  --on-rust: #fff4de;
-  --green: #9aaa45;
-  --on-green: #141110;
-  --cream: #f2e6cc;
-  --on-cream: #141110;
-  --teal: #3e9c8f;
-  --on-teal: #f2fffb;
+  --crimson: #b7093e;
+  --on-crimson: #f9e3c0;
+  --wine: #9d0b49;
+  --on-wine: #f9e3c0;
+  --plum: #641c55;
+  --on-plum: #f9e3c0;
+  --mauve: #8a4373;
+  --on-mauve: #f9e3c0;
+  --coral: #f45d50;
+  --on-coral: #f9e3c0;
+  --orange: #fc8134;
+  --on-orange: #f9e3c0;
+  --amber: #f9b143;
+  --on-amber: #16100e;
+  --mint: #2fa98c;
+  --on-mint: #f9e3c0;
+  --cream: #f3ddb8;
+  --on-cream: #16100e;
   --panel-color: var(--panel2);
   --on-panel-color: var(--ink);
 

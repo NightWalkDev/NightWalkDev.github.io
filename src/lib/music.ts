@@ -1,7 +1,7 @@
 const PLATFORMS = {
-  soundcloud: { label: 'SoundCloud', color: '#FF5500', icon: '/media/icons/soundcloud.svg' },
-  spotify: { label: 'Spotify', color: '#1ED760', icon: '/media/icons/spotify.svg' },
-  youtubeMusic: { label: 'YouTube Music', color: '#FF0000', icon: '/media/icons/ytmusic.svg' },
+  soundcloud: { label: 'SoundCloud', color: 'orange', icon: '/media/icons/soundcloud.svg' },
+  spotify: { label: 'Spotify', color: 'mint', icon: '/media/icons/spotify.svg' },
+  youtubeMusic: { label: 'YouTube Music', color: 'crimson', icon: '/media/icons/ytmusic.svg' },
 } as const;
 
 type Links = Partial<Record<keyof typeof PLATFORMS, string>>;
@@ -14,11 +14,11 @@ export function listenLinks(links: Links) {
 }
 
 export function soundcloudPlayer(url: string) {
-  const params = new URLSearchParams({ url, color: '#ffc83d', visual: 'false', show_artwork: 'false', show_comments: 'false', show_reposts: 'false', hide_related: 'true', show_teaser: 'false' });
+  const params = new URLSearchParams({ url, color: '#f9b143', visual: 'false', show_artwork: 'false', show_comments: 'false', show_reposts: 'false', hide_related: 'true', show_teaser: 'false' });
   return { src: `https://w.soundcloud.com/player/?${params}`, height: 166 };
 }
 
-export const TYPE_COLORS: Record<string, string> = { Album: 'rust', EP: 'teal', Single: 'yellow' };
+export const TYPE_COLORS: Record<string, string> = { Album: 'crimson', EP: 'mint', Single: 'amber' };
 
 export function yearRange(years: (number | undefined)[]) {
   const known = years.filter((y): y is number => y !== undefined);

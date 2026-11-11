@@ -33,7 +33,7 @@ const range = yearRange(releases.map((r) => r.entry.data.year));
       {releases.map(({ entry, Content }, i) => {
         const d = entry.data;
         const player = d.links.soundcloud ? soundcloudPlayer(d.links.soundcloud) : null;
-        const typeColor = resolveColor(TYPE_COLORS[d.type ?? ''] ?? 'yellow');
+        const typeColor = resolveColor(TYPE_COLORS[d.type ?? ''] ?? page.color);
         return (
           <section class="node spotlight" data-panel={entry.id} hidden={i > 0} aria-label={d.title}>
             <img class="spotlight-cover" src={d.cover} alt={d.coverAlt} />
@@ -58,11 +58,11 @@ const range = yearRange(releases.map((r) => r.entry.data.year));
         );
       })}
 
-      <SectionBox id="releases" title="All releases" note="Newest on the left · pick one to play it above" color="yellow">
+      <SectionBox id="releases" title="All releases" note="Newest on the left · pick one to play it above" color={page.color}>
         <div class="strip" data-strip>
           {releases.map(({ entry }) => {
             const d = entry.data;
-            const c = resolveColor(TYPE_COLORS[d.type ?? ''] ?? 'yellow');
+            const c = resolveColor(TYPE_COLORS[d.type ?? ''] ?? page.color);
             return (
               <a class="node strip-item" href={`#${entry.id}`} data-pick={entry.id}>
                 <div class="node-h" style={`--hc: ${c.bg}; --ho: ${c.on}`}>{d.title}{d.type && <small>{d.type}</small>}</div>

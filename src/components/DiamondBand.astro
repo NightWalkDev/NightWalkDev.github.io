@@ -1,0 +1,20 @@
+---
+// Rows of zigzags along the bottom of the hero, lightest on top.
+const colors = ['amber', 'orange', 'coral', 'crimson', 'wine', 'plum'];
+const width = 1440, height = 170, period = 60, depth = 14, rowGap = 24;
+
+const rowPoints = (row: number) => {
+  const base = 26 + row * rowGap;
+  const shift = row % 2 ? period / 2 : 0;
+  const points: string[] = [];
+  for (let x = 0; x <= width + period * 2; x += period / 2) {
+    const peak = (x / (period / 2)) % 2 ? depth : -depth;
+    points.push(`${x - shift},${base + peak}`);
+  }
+  return `${points.join(' ')} ${width + period * 2},${height} -${period},${height}`;
+};
+---
+
+<svg class="diamond-band" viewBox={`0 0 ${width} ${height}`} preserveAspectRatio="none" aria-hidden="true">
+  {colors.map((color, row) => <polygon points={rowPoints(row)} style={`fill: var(--${color})`} />)}
+</svg>

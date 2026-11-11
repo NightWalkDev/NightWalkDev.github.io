@@ -9,13 +9,13 @@ const { src, alt = '' } = Astro.props;
 
 <div class="img">
   {src ? (
-    <img src={src} alt={alt} loading="lazy" data-dither />
+    <img src={src} alt={alt} loading="lazy" />
   ) : (
     <svg viewBox="0 0 160 100" preserveAspectRatio="xMidYMid slice" aria-hidden="true" shape-rendering="crispEdges">
       <rect width="160" height="100" style="fill: var(--panel2)" />
-      <rect x="40" y="34" width="28" height="28" fill="none" stroke-width="5" style="stroke: var(--yellow)" />
-      <path d="M96 32h8v8h8v8h8v8h-40v-8h8v-8h8z" style="fill: var(--rust)" />
-      <rect x="20" y="70" width="12" height="12" style="fill: var(--teal)" />
+      <rect x="40" y="34" width="28" height="28" fill="none" stroke-width="5" style="stroke: var(--amber)" />
+      <path d="M96 32h8v8h8v8h8v8h-40v-8h8v-8h8z" style="fill: var(--crimson)" />
+      <rect x="20" y="70" width="12" height="12" style="fill: var(--mint)" />
       <rect x="130" y="18" width="8" height="8" style="fill: var(--cream)" />
     </svg>
   )}

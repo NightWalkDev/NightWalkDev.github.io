@@ -1,0 +1,28 @@
+---
+import { resolveColor } from '../lib/colors';
+
+interface Props {
+  label: string;
+  href: string;
+  icon: string;
+  color: string;
+  size?: 'large' | 'small';
+}
+
+const { label, href, icon, color, size = 'large' } = Astro.props;
+const opensNewTab = href.startsWith('http');
+const mask = `url(${icon}) center / contain no-repeat`;
+---
+
+<a
+  class:list={['btn', 'btn-icon', `btn-icon-${size}`]}
+  href={href}
+  data-label={label}
+  aria-label={opensNewTab ? `${label} (opens in a new tab)` : label}
+  style={`--c: ${resolveColor(color).bg}`}
+  target={opensNewTab ? '_blank' : undefined}
+  rel={opensNewTab ? 'noopener' : undefined}
+>
+  <span class="btn-glyph" aria-hidden="true" style={`-webkit-mask: ${mask}; mask: ${mask}`}></span>
+  <svg class="btn-ext" viewBox="0 0 10 10" aria-hidden="true"><path d="M2.5 7.5 7.5 2.5M3.5 2.5h4v4" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" /></svg>
+</a>

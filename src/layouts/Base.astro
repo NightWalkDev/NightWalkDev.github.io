@@ -26,15 +26,8 @@ const { title = site.title, description = site.description } = Astro.props;
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Unbounded:wght@600;700;800&family=Rethink+Sans:wght@400;500;600;700&display=swap" />
   </head>
-  <body data-dither={JSON.stringify(site.dither)} style={`--sb-flash: ${site.linkButtons.flash}; --sb-wiggle: ${site.linkButtons.wiggle}`}>
+  <body style={`--scan-dark: ${site.scanlines.enabled ? site.scanlines.darkness : 0}; --scan-gap: ${site.scanlines.spacing}px`}>
     <TopBar />
     <slot />
-    <script>
-      import { ditherImages } from '../scripts/dither.js';
-      import { initScreenButtons } from '../scripts/screen-buttons.js';
-      initScreenButtons();
-      const settings = JSON.parse(document.body.dataset.dither ?? '{}');
-      if (settings.enabled) ditherImages(document, settings);
-    </script>
   </body>
 </html>

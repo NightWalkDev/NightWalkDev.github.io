@@ -1,7 +1,7 @@
 ---
 import { site } from '../lib/site';
 import Node from './Node.astro';
-import ScreenButton from './ScreenButton.astro';
+import IconButton from './IconButton.astro';
 
 const { contact } = site;
 ---
@@ -10,7 +10,7 @@ const { contact } = site;
   <Node title={contact.title} color={contact.color}>
     <div style="padding: 22px 20px 20px; display: flex; flex-direction: column; gap: 18px">
       <div class="btn-row-links">
-        {contact.links.map((l) => <ScreenButton label={l.label} href={l.href} icon={l.icon} color={l.color} />)}
+        {contact.links.map((l) => <IconButton label={l.label} href={l.href} icon={l.icon} color={l.color} />)}
       </div>
       {contact.text && <p style="margin: 0; font-size: 15px; color: var(--dim)">{contact.text}</p>}
     </div>
