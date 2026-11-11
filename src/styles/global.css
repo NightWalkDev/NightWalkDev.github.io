@@ -178,7 +178,7 @@ a.node { display: flex; flex-direction: column; text-decoration: none; color: va
 /* Music and art pages */
 .gallery { display: flex; flex-direction: column; gap: 48px; margin-bottom: 56px; }
 .gallery [hidden] { display: none !important; }
-.spotlight { display: grid; grid-template-columns: minmax(0, 420px) minmax(0, 1fr); align-items: start; height: 456px; }
+.spotlight { display: grid; grid-template-columns: minmax(0, 420px) minmax(0, 1fr); align-items: start; height: 420px; }
 .spotlight-cover { display: block; width: calc(100% - 24px); margin: 12px; aspect-ratio: 1 / 1; object-fit: cover; background: var(--shadow); }
 .spotlight-info { display: flex; flex-direction: column; gap: 16px; padding: 28px 28px 24px; min-width: 0; height: 100%; overflow-y: auto; }
 .spotlight-info h2 { margin: 0; font-size: clamp(36px, 4.5vw, 56px); line-height: 0.95; letter-spacing: -0.02em; }

@@ -15,7 +15,6 @@ const releases = await Promise.all(
 );
 const page = site.musicPage;
 const range = yearRange(releases.map((r) => r.entry.data.year));
-const meta = (d: { type?: string; year?: number }) => [d.type, d.year].filter(Boolean).join(' · ');
 ---
 
 <Base title={`${page.title} · ${site.hero.name}`}>
@@ -37,10 +36,7 @@ const meta = (d: { type?: string; year?: number }) => [d.type, d.year].filter(Bo
         const typeColor = resolveColor(TYPE_COLORS[d.type ?? ''] ?? 'yellow');
         return (
           <section class="node spotlight" data-panel={entry.id} hidden={i > 0} aria-label={d.title}>
-            <div>
-              <div class="node-h" style={`--hc: ${typeColor.bg}; --ho: ${typeColor.on}`}>{i === 0 ? 'Latest release' : 'Release'}{meta(d) && <small>{meta(d)}</small>}</div>
-              <img class="spotlight-cover" src={d.cover} alt={d.coverAlt} />
-            </div>
+            <img class="spotlight-cover" src={d.cover} alt={d.coverAlt} />
             <div class="spotlight-info">
               <h2 class="display">{d.title}</h2>
               {(d.type || d.year || d.tracks.length > 0) && (
@@ -69,9 +65,9 @@ const meta = (d: { type?: string; year?: number }) => [d.type, d.year].filter(Bo
             const c = resolveColor(TYPE_COLORS[d.type ?? ''] ?? 'yellow');
             return (
               <a class="node strip-item" href={`#${entry.id}`} data-pick={entry.id}>
-                <div class="node-h" style={`--hc: ${c.bg}; --ho: ${c.on}`}>{d.year ?? d.type ?? 'Release'}{d.year && d.type && <small>{d.type}</small>}</div>
+                <div class="node-h" style={`--hc: ${c.bg}; --ho: ${c.on}`}>{d.title}{d.type && <small>{d.type}</small>}</div>
                 <Cover src={d.cover} alt={d.coverAlt} />
-                <div class="txt">{d.title}</div>
+                {d.year && <div class="txt">{d.year}</div>}
               </a>
             );
           })}
