@@ -12,7 +12,7 @@ export async function getStaticPaths() {
 const { entry } = Astro.props;
 const p = entry.data;
 const section = site.sections.find((s) => s.type === 'prototypes');
-const sectionColor = section && 'color' in section ? section.color : undefined;
+const sectionColor = section?.type === 'prototypes' ? section.cardColor ?? section.color : undefined;
 const { Content } = await render(entry);
 ---
 

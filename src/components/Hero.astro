@@ -2,10 +2,11 @@
 import { site } from '../lib/site';
 import { resolveColor } from '../lib/colors';
 import Preview3D from './Preview3D.astro';
+import Showreel from './Showreel.astro';
 import ProfileChain from './ProfileChain.astro';
 import DiamondBand from './DiamondBand.astro';
 
-const { hero, preview } = site;
+const { hero, preview, showreel } = site;
 const [first, ...rest] = hero.name.split(' ');
 const badge = resolveColor(hero.badgeColor, 'mauve');
 ---
@@ -17,13 +18,12 @@ const badge = resolveColor(hero.badgeColor, 'mauve');
       <div class="scan" aria-hidden="true"></div>
       <div class="track" aria-hidden="true"></div>
       <div class="hero-osd" aria-hidden="true">
-        <span class="osd">PLAY ▶</span>
         {hero.showCounter && <span class="osd">SP <span data-counter>0:00:00</span></span>}
       </div>
     </>
   )}
   <div class="wrap hero-inner">
-    <div class="hero-grid">
+    <div class:list={['hero-grid', { 'has-reel': hero.side === 'showreel' }]}>
       <div class="hero-text">
         {hero.openToWork && <span class="badge" style={`--c: ${badge.bg}; --on: ${badge.on}`}>● {hero.badge}</span>}
         <h1 class="display chroma">{first}<br />{rest.join(' ')}</h1>
@@ -36,7 +36,7 @@ const badge = resolveColor(hero.badgeColor, 'mauve');
           })}
         </div>
       </div>
-      <Preview3D config={preview} />
+      {hero.side === 'showreel' ? <Showreel id="reel" class="hero-reel" {...showreel} /> : <Preview3D config={preview} />}
     </div>
     <ProfileChain />
   </div>

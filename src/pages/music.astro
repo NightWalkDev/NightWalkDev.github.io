@@ -38,7 +38,7 @@ const range = yearRange(releases.map((r) => r.entry.data.year));
           <section class="node spotlight" data-panel={entry.id} hidden={i > 0} aria-label={d.title}>
             <img class="spotlight-cover" src={d.cover} alt={d.coverAlt} />
             <div class="spotlight-info">
-              <h2 class="display">{d.title}</h2>
+              <h2 class="display fit-line">{d.title}</h2>
               {(d.type || d.year || d.tracks.length > 0) && (
                 <div class="spotlight-meta">
                   {d.type && <span class="tag" style={`--tc: ${typeColor.bg}; --to: ${typeColor.on}`}>{d.type}</span>}

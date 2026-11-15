@@ -5,12 +5,13 @@ interface Props {
   note?: string;
   image?: string;
   youtube?: string;
+  class?: string;
 }
 
-const { id, title, note, image, youtube } = Astro.props;
+const { id, title, note, image, youtube, class: extra = '' } = Astro.props;
 ---
 
-<section id={id} class="node" aria-label={title}>
+<section id={id} class:list={['node', extra]} aria-label={title}>
   <div class="node-h" style="--hc: var(--panel2); --ho: var(--ink)">{title}{note && <small>{note}</small>}</div>
   <div class="reel-frame">
     {youtube ? (

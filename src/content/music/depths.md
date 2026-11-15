@@ -1,5 +1,5 @@
 ---
-title: Depths (feat Ashiibox)
+title: "Depths (feat: Ashiibox)"
 cover: /media/images/music-covers/depths.png
 coverAlt: Depths cover
 order: 2              # 1 = newest, shown first

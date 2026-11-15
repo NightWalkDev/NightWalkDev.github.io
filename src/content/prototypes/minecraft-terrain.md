@@ -1,6 +1,6 @@
 ---
 title: "Minecraft Terrain Generation"
-tag: "Tech"
+tag: "2023"
 summary: Procedural, Biomes, UV Mapping
 cover: /media/images/thumbnails/minecraft-generation.png
 coverAlt: Voxel terrain generation

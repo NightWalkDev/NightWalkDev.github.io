@@ -29,5 +29,8 @@ const { title = site.title, description = site.description } = Astro.props;
   <body style={`--scan-dark: ${site.scanlines.enabled ? site.scanlines.darkness : 0}; --scan-gap: ${site.scanlines.spacing}px`}>
     <TopBar />
     <slot />
+    <script>
+      import '../scripts/fit-line.js';
+    </script>
   </body>
 </html>

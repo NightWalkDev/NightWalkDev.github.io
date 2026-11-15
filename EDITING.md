@@ -10,6 +10,8 @@ Everything you normally change is a content file. Save it with `npm run dev` run
 | The Focus / Engines / Based in boxes | `src/content/site.yaml` → `profile` |
 | Home page sections: order, titles, notes, colors | `src/content/site.yaml` → `sections` |
 | Contact links and text | `src/content/site.yaml` → `contact` |
+| The showreel next to the hero text | `src/content/site.yaml` → `showreel` |
+| Showreel or 3D preview next to the hero text | `src/content/site.yaml` → `hero.side` |
 | The 3D preview (solar system or a model) | `src/content/site.yaml` → `preview` |
 | Which header color each engine gets | `src/content/site.yaml` → `engineColors` |
 | A game project | `src/content/projects/<name>.md` |
@@ -48,6 +50,8 @@ To change what "crimson" looks like everywhere, edit `--crimson` (and `--on-crim
 4. Write the page below the second `---` in Markdown.
 
 Prototypes, music releases and art pieces work the same way in their own folders. To hide something without deleting it, add `draft: true`.
+
+Prototype card headers use `cardColor` from the prototypes section in `site.yaml` (or `color` if there is no `cardColor`). To give one prototype its own color, add `color:` to its file.
 
 ## Link buttons
 
@@ -93,7 +97,19 @@ Code blocks get syntax highlighting: write three backticks followed by the langu
 
 ## The 3D preview
 
+To show it again instead of the showreel, set `hero.side: preview` in `site.yaml`.
+
 `preview.scene: solar` shows the solar system; `model` shows the `.glb` from `preview.model`. Camera, light, sun, orbits and each planet are set right there (sizes and speeds use the same units as the mockup Tweaks). A planet gets an atmosphere halo with `atmosphere: "#hex"` and a ring with `ring: "#hex"`.
+
+## Clip on hover (home page cards)
+
+Add `hoverClip:` to a project or prototype file. The clip plays muted and looped while the card is hovered, then goes back to the cover image:
+
+```yaml
+hoverClip: /media/videos/out-of-stock-hover.mp4
+```
+
+Use a short silent `.mp4` (3 to 6 seconds, about 640 px wide, under 2 MB). A `.gif` also works but is much heavier. Phones and tablets don't hover, so they keep the cover image.
 
 ## Trailer at the top of a page
 

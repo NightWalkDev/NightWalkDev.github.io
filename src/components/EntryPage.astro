@@ -29,7 +29,7 @@ const preview = model ? { ...site.preview, title: 'Model', label: model.split('/
   <main class="wrap">
     <div class="page-head">
       <a class="back" href={backHref}>← {backLabel}</a>
-      <h1 class="display">{title}</h1>
+      <h1 class="display fit-line">{title}</h1>
       <div class="page-meta">
         <span class="chip" style={`background: ${bg}; color: ${on}`}>{facts[0]?.value}</span>
         {facts.slice(1).map((f) => <span class="chip">{f.value}</span>)}

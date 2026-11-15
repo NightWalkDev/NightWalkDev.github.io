@@ -1,5 +1,5 @@
 ---
-title: Visions
+title: "Visions (feat: Ashiibox)"
 cover: /media/images/music-covers/visions.png
 coverAlt: Visions cover
 order: 11              # 1 = newest, shown first

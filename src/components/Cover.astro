@@ -2,9 +2,11 @@
 interface Props {
   src?: string;
   alt?: string;
+  clip?: string;
 }
 
-const { src, alt = '' } = Astro.props;
+const { src, alt = '', clip } = Astro.props;
+const clipIsGif = clip?.toLowerCase().endsWith('.gif');
 ---
 
 <div class="img">
@@ -19,4 +21,30 @@ const { src, alt = '' } = Astro.props;
       <rect x="130" y="18" width="8" height="8" style="fill: var(--cream)" />
     </svg>
   )}
+  {clip && (clipIsGif
+    ? <img class="hover-clip" data-clip={clip} alt="" aria-hidden="true" />
+    : <video class="hover-clip" data-clip={clip} muted loop playsinline preload="none" aria-hidden="true"></video>)}
 </div>
+
+<script>
+  const canHover = matchMedia('(hover: hover)').matches && !matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  document.querySelectorAll<HTMLImageElement | HTMLVideoElement>('.hover-clip[data-clip]').forEach((clip) => {
+    const frame = clip.parentElement!;
+    const card = clip.closest('.node') ?? frame;
+    if (!canHover) return clip.remove();
+
+    card.addEventListener('mouseenter', () => {
+      if (!clip.getAttribute('src')) clip.setAttribute('src', clip.dataset.clip!);
+      frame.classList.add('is-playing');
+      if (clip instanceof HTMLVideoElement) clip.play().catch(() => frame.classList.remove('is-playing'));
+    });
+    card.addEventListener('mouseleave', () => {
+      frame.classList.remove('is-playing');
+      if (clip instanceof HTMLVideoElement) {
+        clip.pause();
+        clip.currentTime = 0;
+      }
+    });
+  });
+</script>

@@ -7,8 +7,8 @@ description: Gameplay / 3C programmer working in Unity and Unreal Engine. Portfo
 
 # Header color of each project card, picked from its engine (a project can override it)
 engineColors:
-  Unreal Engine 5: plum
-  Unity: wine
+  Unreal Engine 5: crimson
+  Unity: crimson
 
 # CRT scanlines over the card images (they disappear on hover)
 scanlines:
@@ -31,10 +31,11 @@ nav:
 hero:
   openToWork: true
   badge: Open to work · France / Remote
-  badgeColor: mauve     # color of the Open to work label
+  badgeColor: mint     # color of the Open to work label
   name: Victor Regard
   role: Gameplay / 3C Programmer
   intro: I'm a game programmer specialized in 3C, haptics, and game feel. I mainly use Unity and Unreal Engine to build characters and interactions that feel good in your hands. I also make synth music and digital art for my passion projects.
+  side: showreel        # what sits next to the hero text: showreel or preview (the 3D solar system)
   vhsOverlay: true
   showCounter: false   # the "SP 0:00:00" counter in the top right of the hero
   buttons:
@@ -44,6 +45,13 @@ hero:
     - label: Contact
       href: "#contact"
       color: cream
+
+# The showreel next to the hero text
+showreel:
+  title: Showreel
+  note: coming soon
+  image: /media/images/thumbnails/a-starless-sky.png
+  # youtube: dQw4w9WgXcQ   <- put a YouTube video id here to embed the real reel
 
 # The chain of boxes under the hero
 profile:
@@ -57,7 +65,7 @@ profile:
     color: mauve
     text: Paris, France · Remote friendly
 
-# The 3D preview next to the hero. scene: solar or model
+# The 3D preview, shown next to the hero text when hero.side is preview. scene: solar or model
 preview:
   title: Preview
   label: Solar system
@@ -77,41 +85,35 @@ preview:
       - { color: "#F3DDB8", size: 0.20, ring: "#FC8134" }
 
 # Home page sections, top to bottom. Reorder, remove or duplicate freely.
-# type: showreel | projects | prototypes | art | text
+# type: projects | prototypes | galleries | text | showreel (a full-width showreel with its own title, image and youtube)
 sections:
-  - type: showreel
-    id: reel
-    title: Showreel
-    note: coming soon
-    image: /media/images/thumbnails/a-starless-sky.png
-    # youtube: dQw4w9WgXcQ   <- put a YouTube video id here to embed the real reel
-
   - type: projects
     id: projects
     title: Game projects
-    note: Team productions · hover to see the full image
-    color: crimson
+    note: Team productions
+    color: wine
     featured: 2          # how many cards get the big top row
 
   - type: prototypes
     id: prototypes
-    title: Prototypes & experiments
+    title: Prototypes & Tech Demos
     note: Solo projects
-    color: amber
+    color: orange          # the group container
+    cardColor: yellow      # the card headers inside it (a prototype file's own color still wins)
 
   - type: galleries     # two doors leading to the Music and Art pages
     id: art
-    title: Music & digital art
+    title: Music & Digital art
     note: FL Studio · Photoshop
-    color: coral
+    color: plum
     music:
       title: Music
       text: Albums, EPs and singles
-      color: orange
+      color: mauve
     art:
       title: Digital art
       text: Illustrations and photo-composites
-      color: mint
+      color: mauve
 
 # The two gallery pages (/music/ and /art/)
 musicPage:
@@ -121,12 +123,12 @@ musicPage:
 artPage:
   title: Digital art
   color: mint
-  intro: Illustrations and photo-composites made in Photoshop, separate from my album covers.
+  intro: You'll find here a collection of illustrations I made with Photoshop. Some were initially meant to be album covers while others were just for fun. I usually use several stock images and vectorial shapes that I mix together using blending layers, gradients, and filters.
 
 contact:
   id: contact
   title: Contact
-  color: cream
+  color: wine
   text: "Business inquiries: victorregard.pro@gmail.com"
   links:
     - label: Email

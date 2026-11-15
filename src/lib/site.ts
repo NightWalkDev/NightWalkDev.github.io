@@ -9,7 +9,7 @@ const gallery = z.object({ title: z.string(), text: z.string(), color: z.string(
 const section = z.discriminatedUnion('type', [
   z.object({ type: z.literal('showreel'), id: z.string(), title: z.string(), note: z.string().optional(), image: z.string().optional(), youtube: z.string().optional() }),
   z.object({ type: z.literal('projects'), id: z.string(), title: z.string(), note: z.string().optional(), color: z.string().optional(), featured: z.number().default(2) }),
-  z.object({ type: z.literal('prototypes'), id: z.string(), title: z.string(), note: z.string().optional(), color: z.string().optional() }),
+  z.object({ type: z.literal('prototypes'), id: z.string(), title: z.string(), note: z.string().optional(), color: z.string().optional(), cardColor: z.string().optional() }),
   z.object({
     type: z.literal('galleries'),
     id: z.string(),
@@ -39,10 +39,12 @@ const siteSchema = z.object({
     name: z.string(),
     role: z.string(),
     intro: z.string(),
+    side: z.enum(['showreel', 'preview']).default('showreel'),
     vhsOverlay: z.boolean().default(true),
     showCounter: z.boolean().default(true),
     buttons: z.array(link.extend({ color: z.string().optional() })),
   }),
+  showreel: z.object({ title: z.string(), note: z.string().optional(), image: z.string().optional(), youtube: z.string().optional() }),
   profile: z.array(z.object({ title: z.string(), color: z.string().optional(), text: z.string() })),
   preview: z.object({
     title: z.string(),

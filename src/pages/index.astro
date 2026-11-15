@@ -34,7 +34,7 @@ const [projects, prototypes] = await Promise.all([getProjects(), getPrototypes()
         if (s.type === 'prototypes') {
           return (
             <SectionBox id={s.id} title={s.title} note={s.note} color={s.color}>
-              <div class="g4">{prototypes.map((p) => <PrototypeCard entry={p} color={s.color} />)}</div>
+              <div class="g4">{prototypes.map((p) => <PrototypeCard entry={p} color={s.cardColor ?? s.color} />)}</div>
             </SectionBox>
           );
         }
